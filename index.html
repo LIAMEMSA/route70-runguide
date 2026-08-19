@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Route 70 Run Guide — Task Force Baseline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,400..800&family=Caveat:wght@500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --card:#f4efe3;        /* manila card stock */
+  --card-deep:#ece5d3;
+  --stock:#faf6ec;       /* bright stock — fresher paper inside framed components */
+  --ink:#1a1f2e;         /* ruling ink */
+  --ink-soft:#3a4152;
+  --graphite:#5b6472;
+  --grease:#c92a1e;      /* grease pencil / stamp red */
+  --grease-soft:#e8d5cf;
+  --rule:#c9c0aa;        /* hairline ruling on stock */
+  --rule-strong:#a89e83;
+  --ok:#2e6b34;
+  --display:"Big Shoulders","Arial Narrow",Impact,sans-serif;
+  --mono:"Courier Prime","Courier New",monospace;
+  --body:"Public Sans",Segoe UI,Arial,sans-serif;
+  --scrawl:"Caveat","Segoe Script",cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--card);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16px;line-height:1.55;
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 119px, rgba(26,31,46,.10) 119px 120px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.11 0 0 0 0 0.12 0 0 0 .035 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.sheet{
+  max-width:1100px;margin:0 auto;padding:0 28px 80px;
+  /* ledger-sheet red margin rule */
+  background:linear-gradient(90deg, transparent 0 46px, rgba(201,42,30,.35) 46px 47.5px, transparent 47.5px);
+}
+@media (max-width:720px){.sheet{background:none}}
+
+/* ---------- paddle masthead ---------- */
+header.paddle{
+  border-bottom:3px double var(--ink);
+  padding:34px 0 0;
+}
+.mast-rule{display:flex;flex-wrap:wrap;gap:0;border:2px solid var(--ink);background:var(--stock)}
+.mast-cell{padding:10px 16px;border-right:1px solid var(--rule-strong);flex:1 1 auto;min-width:120px}
+.mast-cell:last-child{border-right:0}
+.mast-cell .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--graphite)}
+.mast-cell .v{font-family:var(--display);font-weight:700;font-size:1.35rem;line-height:1.15}
+h1{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(2.6rem,7vw,5.4rem);
+  line-height:.95;letter-spacing:.005em;
+  margin:18px 0 6px;text-transform:uppercase;
+}
+.mast-sub{font-size:1.05rem;max-width:64ch;color:var(--ink-soft);margin-bottom:22px}
+.verdict-row{display:flex;align-items:stretch;gap:34px;flex-wrap:wrap;margin:8px 0 30px}
+.bignum{font-family:var(--display);font-weight:800;font-size:clamp(4.2rem,11vw,8.5rem);line-height:1}
+.bignum small{display:block;font-family:var(--mono);font-size:.8rem;font-weight:400;letter-spacing:.06em;color:var(--graphite);margin-top:4px;text-transform:uppercase}
+.stamp{
+  align-self:center;
+  font-family:var(--display);font-weight:800;text-transform:uppercase;
+  color:var(--grease);border:4px solid var(--grease);
+  padding:.28em .55em;font-size:clamp(1.3rem,3.4vw,2.2rem);line-height:1;
+  transform:rotate(-4deg);border-radius:4px;
+  box-shadow:0 1px 0 rgba(201,42,30,.25);
+  mix-blend-mode:multiply;opacity:.92;
+}
+.stamp.ok{color:var(--ok);border-color:var(--ok);box-shadow:0 1px 0 rgba(46,107,52,.25)}
+
+/* ---------- sections ---------- */
+section{margin-top:74px}
+h2{
+  font-family:var(--display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(1.7rem,4vw,2.7rem);line-height:1.02;
+  border-top:2px solid var(--ink);padding-top:12px;
+}
+.plain{font-size:1.06rem;color:var(--ink-soft);max-width:70ch;margin:.55rem 0 1.6rem}
+.note{
+  font-family:var(--scrawl);font-weight:600;color:var(--grease);
+  font-size:1.25rem;line-height:1.25;
+}
+.note .scrawl{position:relative;white-space:nowrap}
+.note svg.underline{position:absolute;left:0;bottom:-7px;width:100%;height:8px}
+p{max-width:70ch}
+figure{margin:26px 0}
+figcaption{font-family:var(--mono);font-size:.8rem;color:var(--graphite);margin-top:8px;max-width:80ch}
+svg text{font-family:var(--mono)}
+.chart-frame{border:1.5px solid var(--ink);background:var(--stock);padding:18px 14px 8px;overflow-x:auto}
+.chart-frame svg{min-width:740px;display:block;width:100%}
+.scroll-cue{display:none;font-family:var(--mono);font-size:.78rem;color:var(--graphite);margin:4px 0 2px}
+@media (max-width:768px){.scroll-cue{display:block}}
+
+/* ledger bars */
+.ledger{display:grid;grid-template-columns:1fr;gap:14px;margin:22px 0}
+.ledger-row{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:14px;align-items:center}
+.ledger-label{font-family:var(--display);font-weight:700;font-size:1.15rem;text-transform:uppercase;line-height:1.1}
+.ledger-label em{display:block;font-family:var(--body);font-style:normal;font-weight:400;font-size:.82rem;color:var(--graphite);text-transform:none}
+.ledger-track{position:relative;height:44px;border-bottom:1px solid var(--rule-strong)}
+.ledger-fill{position:absolute;inset:4px auto 4px 0;background:var(--ink)}
+.ledger-fill.red{background:var(--grease)}
+.ledger-fill.gray{background:var(--graphite)}
+.ledger-n{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--display);font-weight:800;font-size:1.5rem}
+
+/* threshold rule-picker */
+.rulebox{display:flex;gap:0;border:2px solid var(--ink);width:max-content;margin:10px 0 22px}
+.rulebox button{
+  font-family:var(--mono);font-size:1rem;padding:10px 22px;cursor:pointer;
+  background:transparent;border:0;border-right:1px solid var(--rule-strong);color:var(--ink);
+}
+.rulebox button:last-child{border-right:0}
+.rulebox button[aria-pressed="true"]{background:var(--ink);color:var(--card)}
+.rulebox button:hover:not([aria-pressed="true"]){background:var(--card-deep)}
+.rulebox button:focus-visible{outline:3px solid var(--grease);outline-offset:-3px}
+.rule-readout{display:flex;gap:40px;flex-wrap:wrap;align-items:flex-end;margin-bottom:8px}
+.rule-readout .bignum{font-size:clamp(3.4rem,8vw,6rem)}
+
+/* trouble log table */
+table.log{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.92rem}
+table.log th{
+  text-align:left;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--graphite);border-bottom:2px solid var(--ink);padding:6px 10px 6px 0;font-weight:700;
+}
+table.log td{border-bottom:1px solid var(--rule);padding:7px 10px 7px 0;vertical-align:top}
+table.log tr.outlate td:first-child{border-left:0}
+table.log tr.outlate .prob{color:var(--grease);font-weight:700}
+table.log .delay{font-weight:700;white-space:nowrap}
+table.log .delay.red{color:var(--grease)}
+
+/* to-pull list */
+ul.topull{list-style:none;margin:16px 0;max-width:75ch}
+ul.topull li{
+  font-family:var(--mono);padding:10px 0 10px 40px;position:relative;
+  border-bottom:1px solid var(--rule);
+}
+ul.topull li::before{
+  content:"";position:absolute;left:6px;top:14px;width:15px;height:15px;
+  border:2px solid var(--ink);background:var(--stock);
+}
+ul.topull li em{font-style:normal;color:var(--graphite);display:block;font-size:.85rem;font-family:var(--body)}
+ul.topull li.done::before{background:var(--ink)}
+ul.topull li.done::after{
+  content:"\2713";position:absolute;left:4px;top:2px;
+  font-family:var(--scrawl);font-size:1.5rem;color:var(--grease);
+}
+
+/* contract footer */
+.contract{
+  margin-top:80px;border-top:3px double var(--ink);padding-top:22px;
+  font-size:.9rem;color:var(--ink-soft);
+}
+.contract h2{border:0;font-size:1.5rem;padding-top:0}
+.contract dl{display:grid;grid-template-columns:minmax(160px,230px) 1fr;gap:8px 20px;margin:16px 0;max-width:100ch}
+.contract dt{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--graphite)}
+.contract dd{margin:0}
+.contract code{font-family:var(--mono);background:var(--card-deep);padding:0 4px}
+
+/* stamps animate once, from visible */
+@media (prefers-reduced-motion:no-preference){
+  .stamp{transition:transform .45s cubic-bezier(.16,1,.3,1)}
+  .stamp.pre{transform:rotate(-4deg) scale(1.25);opacity:0}
+}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+@media (max-width:720px){
+  .sheet{padding:0 16px 60px}
+  .ledger-row{grid-template-columns:1fr;gap:4px}
+  .mast-cell{min-width:45%}
+  .verdict-row{gap:18px}
+}
+
+
+@media (max-width:720px){
+  .contract dl{grid-template-columns:1fr;gap:2px 0}
+  .contract dt{margin-top:12px}
+  table.log thead{display:none}
+  table.log tr{display:grid;grid-template-columns:1fr auto;grid-template-areas:"a d" "c c" "e e";padding:8px 0;border-bottom:1px solid var(--rule)}
+  table.log td{border:0;padding:1px 0}
+  table.log td:nth-child(1){grid-area:a;font-weight:700}
+  table.log td:nth-child(2){grid-area:a;justify-self:center}
+  table.log td:nth-child(2)::before{content:"run "}
+  table.log td:nth-child(3){grid-area:c}
+  table.log td:nth-child(4){grid-area:e;color:var(--graphite);font-size:.82rem}
+  table.log td:nth-child(5){grid-area:d;justify-self:end}
+}
+
+/* ---------- print ---------- */
+@media print{
+  :root{--card:#fff;--card-deep:#f2f2f2}
+  body{background:#fff;font-size:11.5px}
+  .sheet{max-width:none;padding:0}
+  section{margin-top:34px;break-inside:avoid}
+  .chart-frame,figure{break-inside:avoid}
+  .rulebox,.rule-readout{display:none}
+  .sheet{background:none}
+  .rule-print-note{display:block !important}
+  .stamp.pre{transform:rotate(-4deg) !important;opacity:.92 !important}
+  .chart-frame{overflow:visible}
+  .chart-frame svg{min-width:0}
+  header.paddle{padding-top:0}
+  a{color:inherit;text-decoration:none}
+  @page{margin:14mm}
+}
+.rule-print-note{display:none;font-family:var(--mono);font-size:.85rem;color:var(--graphite)}
+</style>
+</head>
+<body>
+<!--
+THESIS: Route 70's lateness is a ledger — born at pull-out, the terminal, or the street; absorbed, or not, at recovery — and this page is the operator's own run guide blown up to wall scale and annotated with what the data found. It refuses the KPI-card analytics scaffold.
+OWN-WORLD: manila card stock #f4efe3, navy ruling ink #1a1f2e, grease-pencil red #c92a1e, hairline column ruling, rotated stamp verdicts, Courier Prime time columns, Big Shoulders display, Public Sans body.
+STORY: a task-force member sees the 10-point gap, learns where late departures are actually born (61 of 92 had the time and left late anyway), sees the 1/2/5-minute definitions fight quantified, and leaves knowing which two remedies are NOT interchangeable.
+FIRST VIEWPORT: paddle masthead rule (route/garage/period), giant RUN GUIDE title, 75% observed beside a rotated red stamp "85% REQUIRED", one grease-pencil annotation pointing at the ledger.
+FORM: dispatcher's paddle / run guide — candidate 3 of 7 on the ordered grounded list; seed key 9c454bce.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+<div class="sheet">
+
+<header class="paddle">
+  <div class="mast-rule" role="presentation">
+    <div class="mast-cell"><div class="k">Route</div><div class="v">70 Grand</div></div>
+    <div class="mast-cell"><div class="k">Garage</div><div class="v">Brentwood</div></div>
+    <div class="mast-cell"><div class="k">Body</div><div class="v">Task force baseline</div></div>
+    <div class="mast-cell"><div class="k">Period</div><div class="v">Jul 2023 – Jul 2026</div></div>
+    <div class="mast-cell"><div class="k">Compiled</div><div class="v">Aug 19, 2026</div></div>
+    <div class="mast-cell"><div class="k">Status</div><div class="v" style="color:var(--grease)">DRAFT</div></div>
+  </div>
+  <h1>Run Guide:<br>Where Route 70's Minutes Go</h1>
+  <p class="mast-sub">Route 70 Grand is Metro's busiest bus line: about <span id="board-recent">135,000</span> boardings a month. The COO's charter asks the task force to move on-time performance from roughly 77% at charter signing (July measured: 75.3%) to at least 85%. This run guide shows where the late minutes are actually born, using the same data every department already trusts.</p>
+  <div class="verdict-row">
+    <div class="bignum"><span id="otp-now">75.3%</span><small>of checkpoints on time, July 2026 — grading only the service that operated.<br>Counting missed trips against the score: <strong id="otp-true-now">72.9%</strong></small></div>
+    <div class="stamp" data-stamp>85% required</div>
+    <div class="note" style="align-self:center;max-width:30ch">→ <span class="scrawl">the gap is 10–12 points.<svg class="underline" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M1 5 Q25 2 50 5 T99 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Most of it is decided before the bus moves.</div>
+  </div>
+</header>
+
+<section id="trend">
+  <h2>Three years of the same story</h2>
+  <p class="plain">Each dot is one month of Route 70. "On time" means the bus crossed its scheduled checkpoints no more than 5 minutes late and no more than 1 minute early, applied at every checkpoint, measured trips only (never estimated). Two honest ways to count: the solid line grades only the service that operated; the dashed line also counts every missed trip against the score. The space between them is the missed-service penalty — when it widens, buses are not just late, they are not coming.</p>
+  <figure>
+    <div class="scroll-cue">drag sideways for the full chart &#8594;</div><div class="chart-frame"><svg id="trend-chart" viewBox="0 0 980 340" role="img" aria-label="Monthly on-time performance for Route 70 from July 2023 through July 2026. The operated-service line ranges roughly 69 to 84 percent; the line counting missed service runs two to four points lower. Both stay below the 85 percent target."></svg></div>
+    <figcaption>Monthly on-time performance, Route 70, from the checkpoint-level AVL record (39 months, ~155,000 trips). Solid: on-time crossings &divide; crossings served (operated service only). Dashed: on-time crossings &divide; crossings scheduled minus waived (missed service counts against the score). September–October 2023 are excluded: a ransomware event took the AVL record down (3 days and ~40% of days captured, systemwide). The spring 2026 slump began in April (70.1% operated-service, the worst full month in the record) and ran through June; June's dip is known to be systemwide, and whether April–May were is not yet checked.</figcaption>
+  </figure>
+</section>
+
+<section id="ledger">
+  <h2>One day under the microscope</h2>
+  <p class="plain">Tuesday, July 8, 2026, the day the service planners worked through trip by trip. Route 70 ran 168 trips. 47 of them left their first checkpoint more than two minutes late, the departure rule the task force adopted on August 19. The question that decides everything: <strong>did the bus have time to leave on time?</strong> Every trip's terminal arrival, layover, and departure is in the AVL record, so we can answer it for each one.</p>
+
+  <div class="ledger" id="ledger-bars"></div>
+
+  <p><strong>Had the time, left late anyway (31 trips).</strong> These buses reached the terminal with a median of 15.6 minutes before their next scheduled departure — three times the contractual 5-minute break — and still left more than two minutes late, taking a median 21.2 minutes of terminal time. This is the piece supervision and dispatch can move without touching the schedule.</p>
+  <p><strong>Never had a chance (9 trips).</strong> These arrived with less than 5 minutes remaining — the contract's guaranteed-layover minimum — so the lateness was inherited from the previous trip. More discipline cannot fix these; only more recovery time or faster running can. (The classification grants the 5-minute allowance at every terminal, which is more generous than the contract's guarantee of 5 at one end per round trip — so the "had the time" counts are, if anything, understated.)</p>
+  <p><strong>Late out of the garage (6 trips).</strong> First trip of the vehicle's day, already late at the first checkpoint. The radio log confirms it: three "out late — no bus" calls in the 5 p.m. hour alone, one 35 minutes late.</p>
+  <p class="note" style="margin-top:14px">→ same symptom, opposite remedies. Discipline where slack was wasted; schedule where slack never existed.</p>
+
+  <figure>
+    <div class="scroll-cue">drag sideways for the full chart &#8594;</div><div class="chart-frame"><svg id="slack-chart" viewBox="0 0 980 430" role="img" aria-label="Scatter plot of terminal slack in minutes against departure lateness for all July 8 trips. Most late departures sit in the region with 7 or more minutes of slack available."></svg></div>
+    <figcaption>Every July 8 trip with a measured terminal turn. Horizontal: minutes between arriving at the terminal and the next scheduled departure ("slack"). Vertical: how late the bus actually left. The shaded region is the uncomfortable one: plenty of slack, late anyway. The contract guarantees at least 5 minutes of layover at one end and 10 minutes per round trip (Section 8); scheduled layover beyond the guarantee is recovery meant to absorb lateness.</figcaption>
+  </figure>
+</section>
+
+<section id="year">
+  <h2>A year says the same thing</h2>
+  <p class="plain">The one-day finding could have been a fluke of the day Planning picked. It isn't. A checkpoint-level pull of the last twelve months — 55,249 measured Route 70 trips across 383 service days — repeats the July 8 story almost exactly, month after month.</p>
+  <div class="verdict-row" style="margin-top:4px">
+    <div class="bignum"><span id="yr-late">61%</span><small>of trips left the first checkpoint &gt;2 min late (year)</small></div>
+    <div class="bignum"><span id="yr-manu">62%</span><small>of those had 7+ minutes of slack and left late anyway</small></div>
+    <div class="bignum"><span id="yr-slack">18</span><small>median minutes of slack when it happened</small></div>
+  </div>
+  <div class="ledger" id="year-comp"></div>
+  <p><strong>The two ends of the route tell opposite stories.</strong> When a bus leaves North Broadway Transit Center late, slack was sitting there <span id="term-north">79%</span> of the time — a supervision and dispatch question. When a bus leaves Loughborough Commons late, slack was available only <span id="term-south">37%</span> of the time — much more of the south end's lateness is inherited from tight turns, a schedule question.</p>
+  <div class="ledger" id="terminal-bars"></div>
+  <p class="note" style="margin-top:10px">→ one route, two remedies: supervise the north terminal, re-time the south turns.</p>
+</section>
+
+<section id="operators">
+  <h2>Same run, different operator</h2>
+  <p class="plain">Is this about individual operators, or about the runs they're assigned? The twelve-month data can separate the two, because most runs are driven by different operators on different days. Looking only at departures where leaving on time was clearly possible (7+ minutes of slack): the spread between operators is wide, and it persists on the <em>same run</em>. No names or badge numbers appear here or anywhere in this document; identifiers are anonymized.</p>
+  <figure>
+    <div class="scroll-cue">drag sideways for the full chart &#8594;</div><div class="chart-frame"><svg id="operator-strip" viewBox="0 0 980 240" role="img" aria-label="Each dot is one operator's rate of leaving late despite available slack, from about 9 percent at the 10th percentile to 61 percent at the 90th."></svg></div>
+    <figcaption>Each dot is one operator (153 with at least 30 slack-available Route 70 trips in the year). Position: how often that operator left more than two minutes late when 7+ minutes of slack were available. Rates are moderated toward the group average for operators with fewer trips, so a thin sample cannot produce an extreme dot. On runs served by two or more operators, the median gap between operators on the same run is 34 points; assignment does not explain the spread.</figcaption>
+  </figure>
+  <p><strong>Could the radio explain it? We checked.</strong> "Left late with slack available" is measured opportunity, not proven intent — so every one of the year's 11,751 slack-available late departures was matched against the Trouble Log (same operator, same service day, incident logged in that terminal window). Only <strong>5.9%</strong> have any logged incident at all, and only <strong>1.3%</strong> have an external one — traffic, mechanical, or passenger-related. The remaining <strong>94.1% are radio-silent</strong>. Delays under 10 minutes are not logged, so small events are invisible, but that is the point: nothing the system recorded explains these departures. This is the pool coaching and terminal supervision can move, and at the observed spread, moving the top quarter of the distribution toward the median is worth several points of route OTP on its own.</p>
+</section>
+
+<section id="wms">
+  <h2>The service that never came</h2>
+  <p class="plain">On-time performance only grades buses that showed up. Weighted missed service counts the ones that didn't: each trip scored by how much of it was lost: a trip that never ran counts 1, a trip missing most of its checkpoints counts 0.75 or 0.5, a trip missing one counts 0.25, a complete trip counts 0. It is the house's primary missed-service measure; the plain count of fully-missed trips is secondary. To be clear about proportion: missed service is <em>not</em> Route 70's dominant failure — lateness is — and it costs about 4% of a typical weekday's service. But it is concentrated where it hurts most, and its main cause (buses leaving the garage late or not at all) is among the most directly fixable findings on this page.</p>
+  <figure>
+    <div class="scroll-cue">drag sideways for the full chart &#8594;</div><div class="chart-frame"><svg id="wms-month-chart" viewBox="0 0 980 300" role="img" aria-label="Weighted missed trips per month on Route 70 across three years, with a visible surge in June 2026."></svg></div>
+    <figcaption>Weighted missed trips per month, Route 70 (same 39 months as the trend above). This is the quantity that separates the two lines in the first chart.</figcaption>
+  </figure>
+  <figure>
+    <div class="scroll-cue">drag sideways for the full chart &#8594;</div><div class="chart-frame"><svg id="wms-hour-chart" viewBox="0 0 980 300" role="img" aria-label="Weighted missed trips per service day by hour, split by Weekday, Saturday and Sunday schedules."></svg></div>
+    <figcaption id="wms-hour-cap">Weighted missed service per scheduled trip by hour of day, most recent available months. A high bar means riders in that hour lose the most service — which is not necessarily the hour with the worst on-time performance.</figcaption>
+  </figure>
+</section>
+
+<section id="definitions">
+  <h2>Same day, three answers</h2>
+  <p class="plain">The service planners' investigation tool and the R&amp;D pipeline disagree about Route 70's numbers, but it's a definitions difference, not a data conflict. The tool counts a trip late if it leaves its first checkpoint more than <strong>1 minute</strong> late (measured from its own output; the margin notes argue for 2). The standard band doesn't count a departure late until <strong>5 minutes</strong>. Pick the rule, and July 8 gets a different verdict. The task force settled it on August 19: <strong>departures are judged at 2 minutes; overall OTP keeps the production 5-minute band</strong>:</p>
+  <div class="rulebox" role="group" aria-label="First-checkpoint late rule">
+    <button aria-pressed="false" data-rule="1">&gt; 1 min</button>
+    <button aria-pressed="true"  data-rule="2">&gt; 2 min</button>
+    <button aria-pressed="false" data-rule="5">&gt; 5 min</button>
+  </div>
+  <p class="rule-print-note">Share of the 168 trips leaving the first checkpoint late, by rule: &gt;1 min → 55% · &gt;2 min (adopted) → 28% · &gt;5 min → 7%.</p>
+  <div class="rule-readout" aria-live="polite">
+    <div class="bignum"><span id="rule-share">55%</span><small id="rule-label">of trips left the first checkpoint &gt;1 min late</small></div>
+    <div class="stamp" id="rule-stamp" data-stamp>late day</div>
+  </div>
+  <p>Before the task force reads any two reports side by side, it needs one stated rule for the first checkpoint. Until then, a 55%-late day and a 7%-late day can be the same Tuesday.</p>
+</section>
+
+<section id="street">
+  <h2>What the street contributed</h2>
+  <p class="plain">If the schedule's driving times were too tight, buses would lose minutes between checkpoints. On July 8 they mostly didn't: on nearly every segment the typical bus ran <em>at or faster than</em> schedule. The street shows up in the afternoon, and in specific places.</p>
+  <figure>
+    <div class="scroll-cue">drag sideways for the full chart &#8594;</div><div class="chart-frame"><svg id="congestion-chart" viewBox="0 0 980 260" role="img" aria-label="Heat strip of slow-run minutes by hour and direction on July 8. Afternoon hours show the worst tenth of runs losing one to three minutes."></svg></div>
+    <figcaption>By hour and direction: minutes lost versus schedule by the slowest tenth of segment runs (a surge measure; the typical run is shown in the ledger above, because a median would hide the afternoon). Radio log confirms the hotspots: construction closure at Grand &amp; North Market (11:30), traffic onto I-44 (afternoon), Grand &amp; Chippewa, Grand &amp; Park.</figcaption>
+  </figure>
+  <figure>
+    <div class="scroll-cue">drag sideways for the full chart &#8594;</div><div class="chart-frame"><svg id="headway-chart" viewBox="0 0 980 260" role="img" aria-label="Share of bunched and gapped headways by hour on July 8, worst in the afternoon and evening."></svg></div>
+    <figcaption>What riders felt: of 978 measured intervals between consecutive Route 70 buses on July 8, 7.6% were bunched (bus arrived less than half the scheduled interval behind the one ahead) and 9.7% were gaps (more than 1.5× the scheduled interval — for a 15-minute schedule, a wait over 22 minutes).</figcaption>
+  </figure>
+</section>
+
+<section id="recovery">
+  <h2>Is the scheduled recovery enough?</h2>
+  <p class="plain">The scheduling system answers the other half of the terminal question. Each round trip carries layover — schedule slack at the ends meant to absorb lateness — with a contractual floor (current ATU agreement, Section 8: at least 10 minutes of layover per round trip, with 5 minutes guaranteed at one end; pull-out and turn-in trips excepted). Pulling the current weekday schedule from the scheduling system and setting it against a year of measured arrivals:</p>
+  <div class="ledger" id="fx-bars"></div>
+  <p id="fx-verdict"><strong>The schedule banks nearly all of its recovery at the north end.</strong> North Broadway turns get a median <span id="fx-n-med">25</span> minutes of scheduled recovery, and only <strong id="fx-n-insuf">1.4%</strong> of arrivals come in too late for the schedule to absorb — so late departures there have no schedule excuse. Loughborough turns get a median <span id="fx-s-med">8</span> minutes, and <strong id="fx-s-insuf">31%</strong> of arrivals eat past what the schedule can absorb — the south end's inherited lateness is a schedule-design outcome, not an operator one. (The split is contract-compliant — the 10-minute round-trip minimum and the 5-at-one-end guarantee are both met by the north end's 25 minutes. And Section 8 explicitly permits any split that meets those two floors, so rebalancing toward the south end is within Scheduling's existing authority — no renegotiation required. The question is whether the split matches where lateness actually arrives.)</p>
+  <p class="note">→ the terminal split in the year section, explained: generous recovery wasted at the north end; thin recovery overwhelmed at the south.</p>
+</section>
+
+<section id="radio">
+  <h2>What the radio heard</h2>
+  <p class="plain" id="radio-year-lede">Over the last twelve months the Trouble Log recorded <strong id="inc-n">10,507</strong> Route 70 incidents carrying <strong id="inc-delay">65,781</strong> logged delay minutes. Delays under 10 minutes aren't logged, so every figure here is the floor, not the total. Where the logged minutes went:</p>
+  <div class="ledger" id="incident-bars"></div>
+  <p class="plain">And one day in full: every Route 70 trouble call logged on July 8, the day under the microscope above:</p>
+  <div id="trouble-table"></div>
+</section>
+
+<div class="contract">
+  <h2>How to read these numbers</h2>
+  <dl>
+    <dt>On time (standard band)</dt>
+    <dd>A checkpoint crossing no more than 5 minutes late and no more than 1 minute early (−300 to +60 seconds), waived checkpoints excluded. Measured trips only, never estimated.</dd>
+    <dt>Two OTP measures</dt>
+    <dd><strong>Operated-service OTP</strong> (the house "traditional" measure) = on-time crossings ÷ crossings served — it grades only buses that ran. <strong>Missed-service-counted OTP</strong> (the house "true" measure) = on-time crossings ÷ (crossings scheduled − waived) — a trip that never ran counts against it. They are linked by an identity: true = traditional × share of scheduled service delivered, so the gap between the two lines is exactly the missed-service penalty. July 2026: 75.3% vs 72.9%. Which measure the charter's 85% target is scored on is a decision the task force should make explicitly.</dd>
+    <dt>Departure rule (adopted Aug 19, 2026)</dt>
+    <dd>Leaving a layover point or the first checkpoint is judged late past <strong>2 minutes</strong>: the task force's decision, matching what the service planners' margin notes proposed (their tool had been using 1 minute; the standard band waits until 5). Every departure-ledger figure on this page uses the 2-minute rule; overall OTP keeps the production 5-minute band. The rule picker above shows how the verdict moves across all three thresholds.</dd>
+    <dt>Scope of each figure</dt>
+    <dd>Trend: 39 months, ~155,000 Route 70 trips (Sept–Oct 2023 excluded for the ransomware outage). July 8 ledger, street, radio: one weekday, chosen by the service planners — 168 trips, 996 checkpoint crossings. Year-scale ledger and operator sections: Aug 2025 – Aug 18 2026, 345,000 checkpoint crossings, 55,249 measured trips, 383 service days, operator badge resolved on 99.3% of crossings.</dd>
+    <dt>Layover (the contract)</dt>
+    <dd>ATU Local 788 O&amp;M Agreement 2022–2025 (board-approved), Section 8.A: schedules provide layover at both ends to the maximum extent practicable, with a layover required at one end; <strong>a minimum 5 minutes is guaranteed at one end of each round trip</strong>, and <strong>total scheduled layover per MetroBus round trip is at least 10 minutes</strong> (pull-out and turn-in trips excepted; round trips of 40 minutes or less are exempt from the 10 but must give 5 at one terminal end within 40 minutes of operation). The 2025 successor agreement is in negotiation; the current update materials do not touch layovers.</dd>
+    <dt>Sources</dt>
+    <dd>AVL timepoint record (TMDataMart ADHERENCE), including the Aug 2025–Aug 2026 checkpoint pull of 2026-08-19; Trouble Log incident tables, same window; Trapeze FX weekday schedule, June 15 2026 pick (scheduled recovery per trip); tidy trip extracts Jul 2023–Jul 2026; OTP Investigation Tool v1.3 export, Jul 8 2026 (L. Peterson); MetroBus Trouble Record, Jul 8 2026; Route 70 Improvement Task Force charter (R. Forrest, Jul 29 2026).</dd>
+  </dl>
+  <p style="font-family:var(--mono);font-size:.8rem;color:var(--graphite)">DRAFT for task force discussion · compiled 2026-08-19 · rebuilds from payload.json — questions to Bernadette Marion, R&amp;D.</p>
+</div>
+
+</div><!-- /sheet -->
+
+<script id="payload" type="application/json">{"monthly":[{"month":"2023-07","otp_trad":0.7461,"otp_true":0.6735,"trips":3939,"boardings":124782,"pct_complete":0.8403},{"month":"2023-08","otp_trad":0.6913,"otp_true":0.6515,"trips":4023,"boardings":134286,"pct_complete":0.8921},{"month":"2023-11","otp_trad":0.7287,"otp_true":0.6919,"trips":3846,"boardings":127958,"pct_complete":0.9038},{"month":"2023-12","otp_trad":0.8377,"otp_true":0.8216,"trips":3879,"boardings":122575,"pct_complete":0.9482},{"month":"2024-01","otp_trad":0.8388,"otp_true":0.8047,"trips":3929,"boardings":119943,"pct_complete":0.9188},{"month":"2024-02","otp_trad":0.7902,"otp_true":0.7398,"trips":3686,"boardings":134193,"pct_complete":0.9116},{"month":"2024-03","otp_trad":0.8036,"otp_true":0.7885,"trips":3904,"boardings":135044,"pct_complete":0.9534},{"month":"2024-04","otp_trad":0.7832,"otp_true":0.7701,"trips":3820,"boardings":137923,"pct_complete":0.9623},{"month":"2024-05","otp_trad":0.7569,"otp_true":0.7372,"trips":3929,"boardings":143881,"pct_complete":0.9356},{"month":"2024-06","otp_trad":0.8005,"otp_true":0.7818,"trips":4110,"boardings":134191,"pct_complete":0.9204},{"month":"2024-07","otp_trad":0.8152,"otp_true":0.7899,"trips":4677,"boardings":141455,"pct_complete":0.9042},{"month":"2024-08","otp_trad":0.7785,"otp_true":0.7501,"trips":4677,"boardings":154637,"pct_complete":0.8895},{"month":"2024-09","otp_trad":0.7647,"otp_true":0.7221,"trips":4450,"boardings":156298,"pct_complete":0.8416},{"month":"2024-10","otp_trad":0.8001,"otp_true":0.7695,"trips":4736,"boardings":167273,"pct_complete":0.8666},{"month":"2024-11","otp_trad":0.8097,"otp_true":0.7687,"trips":4450,"boardings":146190,"pct_complete":0.8807},{"month":"2024-12","otp_trad":0.8139,"otp_true":0.7875,"trips":4618,"boardings":133763,"pct_complete":0.9086},{"month":"2025-01","otp_trad":0.7822,"otp_true":0.72,"trips":4677,"boardings":129808,"pct_complete":0.8677},{"month":"2025-02","otp_trad":0.7813,"otp_true":0.7473,"trips":4232,"boardings":126627,"pct_complete":0.9182},{"month":"2025-03","otp_trad":0.7573,"otp_true":0.7305,"trips":4618,"boardings":146183,"pct_complete":0.9049},{"month":"2025-04","otp_trad":0.7816,"otp_true":0.7575,"trips":4568,"boardings":148384,"pct_complete":0.9188},{"month":"2025-05","otp_trad":0.7511,"otp_true":0.7307,"trips":4618,"boardings":153842,"pct_complete":0.9229},{"month":"2025-06","otp_trad":0.7759,"otp_true":0.7545,"trips":4509,"boardings":143228,"pct_complete":0.9233},{"month":"2025-07","otp_trad":0.8017,"otp_true":0.7793,"trips":4677,"boardings":142430,"pct_complete":0.9177},{"month":"2025-08","otp_trad":0.7506,"otp_true":0.7316,"trips":4618,"boardings":145536,"pct_complete":0.9216},{"month":"2025-09","otp_trad":0.7232,"otp_true":0.6961,"trips":4509,"boardings":147437,"pct_complete":0.9164},{"month":"2025-10","otp_trad":0.727,"otp_true":0.7011,"trips":4736,"boardings":152908,"pct_complete":0.92},{"month":"2025-11","otp_trad":0.7594,"otp_true":0.7296,"trips":4391,"boardings":131458,"pct_complete":0.9155},{"month":"2025-12","otp_trad":0.8027,"otp_true":0.7761,"trips":4677,"boardings":126667,"pct_complete":0.9226},{"month":"2026-01","otp_trad":0.8179,"otp_true":0.7912,"trips":4618,"boardings":120236,"pct_complete":0.9229},{"month":"2026-02","otp_trad":0.7835,"otp_true":0.7548,"trips":4232,"boardings":124645,"pct_complete":0.9256},{"month":"2026-03","otp_trad":0.8018,"otp_true":0.7861,"trips":4341,"boardings":124210,"pct_complete":0.9376},{"month":"2026-04","otp_trad":0.7007,"otp_true":0.6812,"trips":4568,"boardings":141606,"pct_complete":0.9229},{"month":"2026-05","otp_trad":0.7136,"otp_true":0.6809,"trips":4559,"boardings":143848,"pct_complete":0.9072},{"month":"2026-06","otp_trad":0.7243,"otp_true":0.6868,"trips":4568,"boardings":139190,"pct_complete":0.8951},{"month":"2026-07","otp_trad":0.7526,"otp_true":0.7286,"trips":4509,"boardings":131466,"pct_complete":0.9235}],"ledger_classes":{"on_time_departure":121,"manufactured":31,"inherited":9,"pullout_related":6,"borderline":1},"ledger_medians":{"borderline":{"dep_lateness":4.68,"slack":6.53,"dwell_taken":11.22,"n":1},"inherited":{"dep_lateness":5.45,"slack":-2.15,"dwell_taken":2.13,"n":9},"manufactured":{"dep_lateness":3.18,"slack":15.57,"dwell_taken":21.23,"n":31},"pullout_related":{"dep_lateness":3.28,"slack":null,"dwell_taken":null,"n":6}},"threshold_sensitivity":{">1 min":0.5476,">2 min":0.2798,">5 min":0.0655},"dep_lateness_dist":[0.92,0.85,1.03,1.4,1.17,0.5,0.42,2.08,0.23,0.17,0.98,1.37,1.47,0.38,2.03,0.33,1.82,2.67,2.32,1.87,2.87,0.27,-0.13,-0.08,0.18,-0.45,1.4,1.47,-0.12,-0.22,-0.2,0.4,-0.12,-0.48,1.55,1.58,1.82,0.93,2.02,2.08,3.5,0.97,0.32,2.27,5.2,3.77,0.48,0.42,0.12,0.5,1.62,2.57,0.07,-0.18,0.02,-0.28,0.02,3.13,1.3,0.97,1.02,2.25,2.33,2.15,1.35,1.73,1.27,-0.27,1.08,0.32,0.68,0.47,0.92,1.47,1.17,1.42,3.0,3.88,4.7,3.07,2.72,1.58,0.18,1.03,4.68,1.33,-0.62,-0.77,-0.38,-0.47,-0.78,1.32,1.4,1.38,1.43,0.58,1.83,1.97,-10.07,0.78,0.77,0.13,7.03,-0.53,-0.05,0.47,8.35,1.02,3.18,1.73,2.72,0.5,0.98,1.97,0.63,1.53,0.33,0.73,0.75,1.72,0.53,4.23,1.12,0.92,2.73,1.6,-0.12,9.08,5.93,2.37,3.92,-8.02,2.52,1.72,1.6,-0.08,0.23,0.85,0.15,0.3,12.28,4.03,5.45,5.93,2.0,10.65,3.27,0.35,0.97,0.65,1.57,2.5,1.03,1.3,6.82,0.7,0.62,0.38,0.85,0.65,0.97,3.7,2.5,4.77,1.82,4.82,6.0,4.63],"slack_vs_lateness":[{"slack":36.5,"late":0.8,"cls":"on_time_departure"},{"slack":3.2,"late":1.0,"cls":"on_time_departure"},{"slack":28.5,"late":1.4,"cls":"on_time_departure"},{"slack":13.1,"late":1.2,"cls":"on_time_departure"},{"slack":23.8,"late":0.5,"cls":"on_time_departure"},{"slack":10.2,"late":0.4,"cls":"on_time_departure"},{"slack":2.2,"late":0.2,"cls":"on_time_departure"},{"slack":19.8,"late":0.2,"cls":"on_time_departure"},{"slack":16.3,"late":1.0,"cls":"on_time_departure"},{"slack":20.2,"late":1.4,"cls":"on_time_departure"},{"slack":13.3,"late":1.5,"cls":"on_time_departure"},{"slack":28.8,"late":0.4,"cls":"on_time_departure"},{"slack":13.5,"late":2.0,"cls":"manufactured"},{"slack":19.8,"late":0.3,"cls":"on_time_departure"},{"slack":7.2,"late":1.8,"cls":"on_time_departure"},{"slack":10.0,"late":2.7,"cls":"manufactured"},{"slack":-0.9,"late":2.3,"cls":"inherited"},{"slack":21.8,"late":1.9,"cls":"on_time_departure"},{"slack":24.3,"late":0.3,"cls":"on_time_departure"},{"slack":9.6,"late":-0.1,"cls":"on_time_departure"},{"slack":25.9,"late":-0.1,"cls":"on_time_departure"},{"slack":13.9,"late":0.2,"cls":"on_time_departure"},{"slack":27.8,"late":-0.5,"cls":"on_time_departure"},{"slack":12.5,"late":1.4,"cls":"on_time_departure"},{"slack":18.8,"late":1.5,"cls":"on_time_departure"},{"slack":11.2,"late":-0.1,"cls":"on_time_departure"},{"slack":25.8,"late":-0.2,"cls":"on_time_departure"},{"slack":9.6,"late":-0.2,"cls":"on_time_departure"},{"slack":22.6,"late":0.4,"cls":"on_time_departure"},{"slack":9.4,"late":-0.1,"cls":"on_time_departure"},{"slack":33.1,"late":-0.5,"cls":"on_time_departure"},{"slack":4.9,"late":1.6,"cls":"on_time_departure"},{"slack":24.2,"late":1.8,"cls":"on_time_departure"},{"slack":13.8,"late":0.9,"cls":"on_time_departure"},{"slack":29.5,"late":2.0,"cls":"manufactured"},{"slack":10.8,"late":2.1,"cls":"manufactured"},{"slack":26.5,"late":3.5,"cls":"manufactured"},{"slack":13.9,"late":0.3,"cls":"on_time_departure"},{"slack":26.2,"late":2.3,"cls":"manufactured"},{"slack":12.9,"late":5.2,"cls":"manufactured"},{"slack":20.1,"late":3.8,"cls":"manufactured"},{"slack":11.5,"late":0.5,"cls":"on_time_departure"},{"slack":19.3,"late":0.4,"cls":"on_time_departure"},{"slack":1.9,"late":0.1,"cls":"on_time_departure"},{"slack":21.4,"late":0.5,"cls":"on_time_departure"},{"slack":11.9,"late":1.6,"cls":"on_time_departure"},{"slack":25.1,"late":2.6,"cls":"manufactured"},{"slack":27.1,"late":-0.2,"cls":"on_time_departure"},{"slack":10.2,"late":0.0,"cls":"on_time_departure"},{"slack":24.2,"late":-0.3,"cls":"on_time_departure"},{"slack":12.3,"late":0.0,"cls":"on_time_departure"},{"slack":26.7,"late":3.1,"cls":"manufactured"},{"slack":4.1,"late":1.3,"cls":"on_time_departure"},{"slack":20.4,"late":1.0,"cls":"on_time_departure"},{"slack":12.8,"late":1.0,"cls":"on_time_departure"},{"slack":19.0,"late":2.2,"cls":"manufactured"},{"slack":-1.0,"late":2.3,"cls":"inherited"},{"slack":11.6,"late":1.3,"cls":"on_time_departure"},{"slack":27.2,"late":1.7,"cls":"on_time_departure"},{"slack":10.1,"late":1.3,"cls":"on_time_departure"},{"slack":17.5,"late":-0.3,"cls":"on_time_departure"},{"slack":12.2,"late":1.1,"cls":"on_time_departure"},{"slack":23.5,"late":0.3,"cls":"on_time_departure"},{"slack":9.1,"late":0.7,"cls":"on_time_departure"},{"slack":27.1,"late":0.5,"cls":"on_time_departure"},{"slack":10.9,"late":0.9,"cls":"on_time_departure"},{"slack":23.9,"late":1.5,"cls":"on_time_departure"},{"slack":14.4,"late":1.2,"cls":"on_time_departure"},{"slack":15.3,"late":3.0,"cls":"manufactured"},{"slack":27.4,"late":3.9,"cls":"manufactured"},{"slack":13.8,"late":4.7,"cls":"manufactured"},{"slack":21.2,"late":3.1,"cls":"manufactured"},{"slack":7.6,"late":2.7,"cls":"manufactured"},{"slack":22.1,"late":1.6,"cls":"on_time_departure"},{"slack":11.2,"late":0.2,"cls":"on_time_departure"},{"slack":24.1,"late":1.0,"cls":"on_time_departure"},{"slack":6.5,"late":4.7,"cls":"borderline"},{"slack":27.7,"late":1.3,"cls":"on_time_departure"},{"slack":32.8,"late":-0.8,"cls":"on_time_departure"},{"slack":14.0,"late":-0.4,"cls":"on_time_departure"},{"slack":31.4,"late":-0.5,"cls":"on_time_departure"},{"slack":17.9,"late":-0.8,"cls":"on_time_departure"},{"slack":27.5,"late":1.3,"cls":"on_time_departure"},{"slack":10.0,"late":1.4,"cls":"on_time_departure"},{"slack":21.1,"late":1.4,"cls":"on_time_departure"},{"slack":11.5,"late":1.4,"cls":"on_time_departure"},{"slack":21.1,"late":0.6,"cls":"on_time_departure"},{"slack":-0.6,"late":1.8,"cls":"on_time_departure"},{"slack":14.3,"late":-10.1,"cls":"on_time_departure"},{"slack":29.9,"late":0.8,"cls":"on_time_departure"},{"slack":13.0,"late":0.8,"cls":"on_time_departure"},{"slack":20.1,"late":0.1,"cls":"on_time_departure"},{"slack":-5.2,"late":7.0,"cls":"inherited"},{"slack":14.3,"late":-0.5,"cls":"on_time_departure"},{"slack":5.0,"late":-0.1,"cls":"on_time_departure"},{"slack":21.2,"late":0.5,"cls":"on_time_departure"},{"slack":-6.2,"late":8.3,"cls":"inherited"},{"slack":14.6,"late":3.2,"cls":"manufactured"},{"slack":13.2,"late":2.7,"cls":"manufactured"},{"slack":41.5,"late":0.5,"cls":"on_time_departure"},{"slack":12.2,"late":1.0,"cls":"on_time_departure"},{"slack":26.7,"late":2.0,"cls":"on_time_departure"},{"slack":5.7,"late":0.6,"cls":"on_time_departure"},{"slack":8.6,"late":0.3,"cls":"on_time_departure"},{"slack":19.8,"late":0.7,"cls":"on_time_departure"},{"slack":13.6,"late":0.8,"cls":"on_time_departure"},{"slack":26.7,"late":1.7,"cls":"on_time_departure"},{"slack":8.8,"late":0.5,"cls":"on_time_departure"},{"slack":28.9,"late":4.2,"cls":"manufactured"},{"slack":25.6,"late":0.9,"cls":"on_time_departure"},{"slack":-0.2,"late":2.7,"cls":"inherited"},{"slack":7.8,"late":1.6,"cls":"on_time_departure"},{"slack":-7.2,"late":9.1,"cls":"inherited"},{"slack":14.4,"late":5.9,"cls":"manufactured"},{"slack":1.2,"late":2.4,"cls":"inherited"},{"slack":24.8,"late":3.9,"cls":"manufactured"},{"slack":9.2,"late":-8.0,"cls":"on_time_departure"},{"slack":14.2,"late":2.5,"cls":"manufactured"},{"slack":28.4,"late":1.6,"cls":"on_time_departure"},{"slack":4.1,"late":-0.1,"cls":"on_time_departure"},{"slack":21.4,"late":0.2,"cls":"on_time_departure"},{"slack":4.4,"late":0.8,"cls":"on_time_departure"},{"slack":16.4,"late":0.2,"cls":"on_time_departure"},{"slack":9.8,"late":0.3,"cls":"on_time_departure"},{"slack":18.1,"late":4.0,"cls":"manufactured"},{"slack":-2.2,"late":5.4,"cls":"inherited"},{"slack":23.1,"late":5.9,"cls":"manufactured"},{"slack":-0.5,"late":2.0,"cls":"on_time_departure"},{"slack":15.6,"late":10.7,"cls":"manufactured"},{"slack":10.1,"late":3.3,"cls":"manufactured"},{"slack":16.1,"late":1.0,"cls":"on_time_departure"},{"slack":11.3,"late":0.7,"cls":"on_time_departure"},{"slack":2.8,"late":1.6,"cls":"on_time_departure"},{"slack":7.3,"late":2.5,"cls":"manufactured"},{"slack":6.5,"late":1.0,"cls":"on_time_departure"},{"slack":15.7,"late":1.3,"cls":"on_time_departure"},{"slack":29.7,"late":0.7,"cls":"on_time_departure"},{"slack":9.5,"late":0.6,"cls":"on_time_departure"},{"slack":24.7,"late":0.4,"cls":"on_time_departure"},{"slack":9.8,"late":0.8,"cls":"on_time_departure"},{"slack":30.7,"late":0.7,"cls":"on_time_departure"},{"slack":15.2,"late":1.0,"cls":"on_time_departure"},{"slack":21.0,"late":2.5,"cls":"manufactured"},{"slack":13.0,"late":4.8,"cls":"manufactured"},{"slack":7.8,"late":1.8,"cls":"on_time_departure"},{"slack":25.7,"late":4.8,"cls":"manufactured"},{"slack":-3.2,"late":6.0,"cls":"inherited"},{"slack":13.8,"late":4.6,"cls":"manufactured"}],"hourly_july":[{"hour":0,"otp":0.7898,"late_share":0.2008,"trips":90},{"hour":3,"otp":0.9919,"late_share":0.0,"trips":21},{"hour":4,"otp":0.8988,"late_share":0.0499,"trips":129},{"hour":5,"otp":0.9355,"late_share":0.0322,"trips":180},{"hour":6,"otp":0.8707,"late_share":0.0653,"trips":264},{"hour":7,"otp":0.8747,"late_share":0.0807,"trips":264},{"hour":8,"otp":0.8436,"late_share":0.095,"trips":264},{"hour":9,"otp":0.7885,"late_share":0.1477,"trips":264},{"hour":10,"otp":0.8024,"late_share":0.1484,"trips":264},{"hour":11,"otp":0.73,"late_share":0.2508,"trips":264},{"hour":12,"otp":0.7761,"late_share":0.2057,"trips":264},{"hour":13,"otp":0.7341,"late_share":0.2466,"trips":264},{"hour":14,"otp":0.7466,"late_share":0.2227,"trips":264},{"hour":15,"otp":0.694,"late_share":0.2862,"trips":264},{"hour":16,"otp":0.7181,"late_share":0.2569,"trips":264},{"hour":17,"otp":0.7776,"late_share":0.2015,"trips":243},{"hour":18,"otp":0.5894,"late_share":0.4046,"trips":204},{"hour":19,"otp":0.5878,"late_share":0.4059,"trips":162},{"hour":20,"otp":0.5462,"late_share":0.4496,"trips":162},{"hour":21,"otp":0.6195,"late_share":0.3732,"trips":141},{"hour":22,"otp":0.6053,"late_share":0.3914,"trips":153},{"hour":23,"otp":0.6647,"late_share":0.3237,"trips":120}],"segments":[{"direction":"0N","seg":"GRANSTL>BTAYTCTR","n":82,"med_excess":-0.92,"p90_excess":1.83,"sched_run":11.0},{"direction":"0N","seg":"GRNDARSN>GRNDMLNK","n":82,"med_excess":-0.35,"p90_excess":1.81,"sched_run":8.0},{"direction":"0N","seg":"GRNDCHIP>GRNDARSN","n":82,"med_excess":-1.33,"p90_excess":0.79,"sched_run":7.0},{"direction":"0N","seg":"GRNDMLNK>GRANSTL","n":81,"med_excess":-0.52,"p90_excess":1.15,"sched_run":10.0},{"direction":"0N","seg":"LOFBCOMM>GRNDCHIP","n":82,"med_excess":-1.03,"p90_excess":2.17,"sched_run":12.0},{"direction":"0S","seg":"BTAYTCTR>GRANSTL","n":83,"med_excess":-0.92,"p90_excess":1.41,"sched_run":12.0},{"direction":"0S","seg":"GRANSTL>GRNDMLNK","n":82,"med_excess":0.08,"p90_excess":3.64,"sched_run":9.0},{"direction":"0S","seg":"GRNDARSN>GRNDCHIP","n":82,"med_excess":-1.47,"p90_excess":0.27,"sched_run":7.0},{"direction":"0S","seg":"GRNDCHIP>LOFBCOMM","n":84,"med_excess":-3.71,"p90_excess":-1.24,"sched_run":13.0},{"direction":"0S","seg":"GRNDMLNK>GRNDARSN","n":82,"med_excess":0.05,"p90_excess":2.03,"sched_run":7.0}],"congestion_by_hour":[{"direction":"0N","hour":0,"p90_excess":0.51,"n":9},{"direction":"0N","hour":4,"p90_excess":0.44,"n":10},{"direction":"0N","hour":5,"p90_excess":1.14,"n":9},{"direction":"0N","hour":6,"p90_excess":0.3,"n":22},{"direction":"0N","hour":7,"p90_excess":0.82,"n":25},{"direction":"0N","hour":8,"p90_excess":1.38,"n":25},{"direction":"0N","hour":9,"p90_excess":1.35,"n":25},{"direction":"0N","hour":10,"p90_excess":1.31,"n":25},{"direction":"0N","hour":11,"p90_excess":1.35,"n":24},{"direction":"0N","hour":12,"p90_excess":1.72,"n":25},{"direction":"0N","hour":13,"p90_excess":1.94,"n":25},{"direction":"0N","hour":14,"p90_excess":2.21,"n":24},{"direction":"0N","hour":15,"p90_excess":0.56,"n":25},{"direction":"0N","hour":16,"p90_excess":1.31,"n":25},{"direction":"0N","hour":17,"p90_excess":0.05,"n":23},{"direction":"0N","hour":18,"p90_excess":0.89,"n":18},{"direction":"0N","hour":19,"p90_excess":2.13,"n":15},{"direction":"0N","hour":20,"p90_excess":0.97,"n":15},{"direction":"0N","hour":21,"p90_excess":3.39,"n":15},{"direction":"0N","hour":22,"p90_excess":1.95,"n":15},{"direction":"0N","hour":23,"p90_excess":2.73,"n":11},{"direction":"0S","hour":0,"p90_excess":1.39,"n":10},{"direction":"0S","hour":4,"p90_excess":0.11,"n":7},{"direction":"0S","hour":5,"p90_excess":-0.11,"n":14},{"direction":"0S","hour":6,"p90_excess":0.21,"n":24},{"direction":"0S","hour":7,"p90_excess":0.68,"n":25},{"direction":"0S","hour":8,"p90_excess":0.21,"n":25},{"direction":"0S","hour":9,"p90_excess":0.82,"n":25},{"direction":"0S","hour":10,"p90_excess":0.29,"n":25},{"direction":"0S","hour":11,"p90_excess":2.52,"n":24},{"direction":"0S","hour":12,"p90_excess":0.94,"n":24},{"direction":"0S","hour":13,"p90_excess":1.24,"n":25},{"direction":"0S","hour":14,"p90_excess":0.78,"n":25},{"direction":"0S","hour":15,"p90_excess":6.57,"n":25},{"direction":"0S","hour":16,"p90_excess":3.22,"n":25},{"direction":"0S","hour":17,"p90_excess":1.42,"n":22},{"direction":"0S","hour":18,"p90_excess":0.53,"n":22},{"direction":"0S","hour":19,"p90_excess":2.66,"n":14},{"direction":"0S","hour":20,"p90_excess":0.18,"n":15},{"direction":"0S","hour":21,"p90_excess":2.58,"n":14},{"direction":"0S","hour":22,"p90_excess":2.65,"n":15},{"direction":"0S","hour":23,"p90_excess":-0.97,"n":11}],"headway_summary":{"mean_sched":14.8,"cv_actual":0.49,"bunched_share":0.076,"gapped_share":0.097,"n":978},"headway_by_hour":[{"hour":0,"bunched":0.0,"gapped":0.0,"n":21},{"hour":4,"bunched":0.0,"gapped":0.0,"n":8},{"hour":5,"bunched":0.0,"gapped":0.0,"n":27},{"hour":6,"bunched":0.0,"gapped":0.0,"n":52},{"hour":7,"bunched":0.051,"gapped":0.051,"n":59},{"hour":8,"bunched":0.0,"gapped":0.017,"n":60},{"hour":9,"bunched":0.102,"gapped":0.102,"n":59},{"hour":10,"bunched":0.034,"gapped":0.086,"n":58},{"hour":11,"bunched":0.123,"gapped":0.14,"n":57},{"hour":12,"bunched":0.082,"gapped":0.131,"n":61},{"hour":13,"bunched":0.034,"gapped":0.103,"n":58},{"hour":14,"bunched":0.133,"gapped":0.15,"n":60},{"hour":15,"bunched":0.103,"gapped":0.138,"n":58},{"hour":16,"bunched":0.15,"gapped":0.133,"n":60},{"hour":17,"bunched":0.237,"gapped":0.22,"n":59},{"hour":18,"bunched":0.137,"gapped":0.235,"n":51},{"hour":19,"bunched":0.057,"gapped":0.114,"n":35},{"hour":20,"bunched":0.029,"gapped":0.0,"n":35},{"hour":21,"bunched":0.028,"gapped":0.056,"n":36},{"hour":22,"bunched":0.028,"gapped":0.028,"n":36},{"hour":23,"bunched":0.0,"gapped":0.036,"n":28}],"trouble_log":[{"time":"03:24","run":2521,"problem":"Out Late-Miscellaneous","location":"BW Fac","delay_min":10},{"time":"06:07","run":2530,"problem":"Out Late-Miscellaneous","location":"BW Fac","delay_min":11},{"time":"11:30","run":2532,"problem":"Blocked Const/Road Closure","location":"at N GRAND BLVD[on] and N MARKET ST","delay_min":null},{"time":"14:52","run":2927,"problem":"Inadequate Schedule","location":"at N GRAND BLVD[on] and LINDELL BLVD","delay_min":16},{"time":"15:48","run":2532,"problem":"Traffic","location":"at E GRAND BLVD[on] and N 19TH ST","delay_min":13},{"time":"15:51","run":2541,"problem":"Blocked-Accident/Emerg Equip","location":"Last Time Point: B.","delay_min":null},{"time":"16:47","run":2532,"problem":"Previous Trip","location":"at S GRAND BLVD[on] and UNNAMED ROAD","delay_min":12},{"time":"16:57","run":2535,"problem":"Traffic","location":"at S GRAND BLVD[on] and CHIPPEWA ST","delay_min":null},{"time":"17:02","run":2541,"problem":"Traffic","location":"83 yards SSE of LOUGHBOROUGH DR[on] and S GRAND DR","delay_min":16},{"time":"17:05","run":2537,"problem":"Passenger Service","location":"59 yards N of S GRAND BLVD[on] and HICKORY ST","delay_min":10},{"time":"17:05","run":2541,"problem":"Previous Trip","location":"at LOUGHBOROUGH COMMONS DRIVEWAY[on] and LOUGHBOROUGH COMMONS SHOPPING CENTER PRIVATE ROA","delay_min":12},{"time":"17:08","run":2544,"problem":"Out Late-No Bus","location":"BRENTWOOD METROBUS FACILITY","delay_min":35},{"time":"17:17","run":2543,"problem":"Out Late-No Bus","location":"BW Fav","delay_min":11},{"time":"17:18","run":2533,"problem":"Traffic","location":"at S GRAND BLVD[on] and PARK AVE","delay_min":10},{"time":"17:28","run":2534,"problem":"Traffic","location":"at S GRAND BLVD[on] and SCOTT AVE","delay_min":10},{"time":"17:31","run":2545,"problem":"Out Late-No Bus","location":"BW Fac","delay_min":10},{"time":"18:03","run":2543,"problem":"Previous Trip","location":"GRAND ARSENAL","delay_min":12},{"time":"18:29","run":2538,"problem":"Passenger Service","location":"at GRAND METROLINK STATION WALKWAY[on] and SCOTT AVE","delay_min":11},{"time":"18:44","run":2541,"problem":"Passenger Service","location":"61 yards N of S GRAND BLVD[on] and CHOUTEAU AVE","delay_min":11},{"time":"21:28","run":2543,"problem":"Passenger Service","location":"at S GRAND BLVD[on] and CAROLINE ST","delay_min":10},{"time":"22:49","run":2541,"problem":"Passenger Service","location":"at S GRAND BLVD[on] and HICKORY ST","delay_min":10},{"time":"23:10","run":2543,"problem":"Personal Stop","location":"at E TAYLOR AVE[on] and N BROADWAY","delay_min":10}],"headline":{"date":"2026-07-08","trips":168,"late_departures":47,"manufactured":31,"inherited":9,"pullout":6,"otp_trad_jul8":0.7641,"otp_true_jul8":0.755,"otp_trad_july":0.7526,"otp_true_july":0.7286,"otp_trad_june":0.7243,"otp_true_june":0.6868,"target":0.85,"boardings_per_month_recent":135328},"wms_monthly":[{"month":"2023-07","trips":3939,"wt_miss":403.2,"wt_rate":0.1024},{"month":"2023-08","trips":4023,"wt_miss":245.5,"wt_rate":0.061},{"month":"2023-11","trips":3846,"wt_miss":207.0,"wt_rate":0.0538},{"month":"2023-12","trips":3879,"wt_miss":85.0,"wt_rate":0.0219},{"month":"2024-01","trips":3929,"wt_miss":174.2,"wt_rate":0.0443},{"month":"2024-02","trips":3686,"wt_miss":238.5,"wt_rate":0.0647},{"month":"2024-03","trips":3904,"wt_miss":83.0,"wt_rate":0.0213},{"month":"2024-04","trips":3820,"wt_miss":70.0,"wt_rate":0.0183},{"month":"2024-05","trips":3929,"wt_miss":111.2,"wt_rate":0.0283},{"month":"2024-06","trips":4110,"wt_miss":117.0,"wt_rate":0.0285},{"month":"2024-07","trips":4677,"wt_miss":172.5,"wt_rate":0.0369},{"month":"2024-08","trips":4677,"wt_miss":201.0,"wt_rate":0.043},{"month":"2024-09","trips":4450,"wt_miss":290.2,"wt_rate":0.0652},{"month":"2024-10","trips":4736,"wt_miss":224.2,"wt_rate":0.0474},{"month":"2024-11","trips":4450,"wt_miss":251.5,"wt_rate":0.0565},{"month":"2024-12","trips":4618,"wt_miss":173.0,"wt_rate":0.0375},{"month":"2025-01","trips":4677,"wt_miss":387.8,"wt_rate":0.0829},{"month":"2025-02","trips":4232,"wt_miss":195.2,"wt_rate":0.0461},{"month":"2025-03","trips":4618,"wt_miss":187.8,"wt_rate":0.0407},{"month":"2025-04","trips":4568,"wt_miss":160.0,"wt_rate":0.035},{"month":"2025-05","trips":4618,"wt_miss":147.5,"wt_rate":0.0319},{"month":"2025-06","trips":4509,"wt_miss":145.5,"wt_rate":0.0323},{"month":"2025-07","trips":4677,"wt_miss":153.8,"wt_rate":0.0329},{"month":"2025-08","trips":4618,"wt_miss":140.8,"wt_rate":0.0305},{"month":"2025-09","trips":4509,"wt_miss":185.5,"wt_rate":0.0411},{"month":"2025-10","trips":4736,"wt_miss":186.8,"wt_rate":0.0394},{"month":"2025-11","trips":4391,"wt_miss":187.8,"wt_rate":0.0428},{"month":"2025-12","trips":4677,"wt_miss":173.2,"wt_rate":0.037},{"month":"2026-01","trips":4618,"wt_miss":168.8,"wt_rate":0.0365},{"month":"2026-02","trips":4232,"wt_miss":167.2,"wt_rate":0.0395},{"month":"2026-03","trips":4341,"wt_miss":104.0,"wt_rate":0.024},{"month":"2026-04","trips":4568,"wt_miss":144.2,"wt_rate":0.0316},{"month":"2026-05","trips":4559,"wt_miss":224.8,"wt_rate":0.0493},{"month":"2026-06","trips":4568,"wt_miss":256.0,"wt_rate":0.056},{"month":"2026-07","trips":4509,"wt_miss":155.8,"wt_rate":0.0345}],"wms_by_hour_daytype":[{"day_type":"Saturday","hour":0,"trips":156,"wt_miss_per_day":0.13,"share":0.0449},{"day_type":"Saturday","hour":4,"trips":260,"wt_miss_per_day":0.16,"share":0.0317},{"day_type":"Saturday","hour":5,"trips":312,"wt_miss_per_day":0.1,"share":0.0168},{"day_type":"Saturday","hour":6,"trips":312,"wt_miss_per_day":0.13,"share":0.0224},{"day_type":"Saturday","hour":7,"trips":312,"wt_miss_per_day":0.13,"share":0.0224},{"day_type":"Saturday","hour":8,"trips":312,"wt_miss_per_day":0.17,"share":0.0288},{"day_type":"Saturday","hour":9,"trips":312,"wt_miss_per_day":0.2,"share":0.0337},{"day_type":"Saturday","hour":10,"trips":312,"wt_miss_per_day":0.19,"share":0.0312},{"day_type":"Saturday","hour":11,"trips":312,"wt_miss_per_day":0.18,"share":0.0296},{"day_type":"Saturday","hour":12,"trips":312,"wt_miss_per_day":0.18,"share":0.0304},{"day_type":"Saturday","hour":13,"trips":312,"wt_miss_per_day":0.16,"share":0.0264},{"day_type":"Saturday","hour":14,"trips":312,"wt_miss_per_day":0.2,"share":0.0337},{"day_type":"Saturday","hour":15,"trips":312,"wt_miss_per_day":0.16,"share":0.0272},{"day_type":"Saturday","hour":16,"trips":312,"wt_miss_per_day":0.15,"share":0.0256},{"day_type":"Saturday","hour":17,"trips":312,"wt_miss_per_day":0.23,"share":0.0377},{"day_type":"Saturday","hour":18,"trips":208,"wt_miss_per_day":0.16,"share":0.0397},{"day_type":"Saturday","hour":19,"trips":208,"wt_miss_per_day":0.14,"share":0.0349},{"day_type":"Saturday","hour":20,"trips":208,"wt_miss_per_day":0.14,"share":0.0349},{"day_type":"Saturday","hour":21,"trips":208,"wt_miss_per_day":0.21,"share":0.0517},{"day_type":"Saturday","hour":22,"trips":156,"wt_miss_per_day":0.11,"share":0.0369},{"day_type":"Saturday","hour":23,"trips":208,"wt_miss_per_day":0.18,"share":0.0457},{"day_type":"Sunday","hour":0,"trips":174,"wt_miss_per_day":0.17,"share":0.056},{"day_type":"Sunday","hour":4,"trips":290,"wt_miss_per_day":0.14,"share":0.0284},{"day_type":"Sunday","hour":5,"trips":348,"wt_miss_per_day":0.13,"share":0.0216},{"day_type":"Sunday","hour":6,"trips":348,"wt_miss_per_day":0.15,"share":0.0251},{"day_type":"Sunday","hour":7,"trips":348,"wt_miss_per_day":0.16,"share":0.0273},{"day_type":"Sunday","hour":8,"trips":348,"wt_miss_per_day":0.2,"share":0.0338},{"day_type":"Sunday","hour":9,"trips":348,"wt_miss_per_day":0.19,"share":0.0309},{"day_type":"Sunday","hour":10,"trips":348,"wt_miss_per_day":0.16,"share":0.0273},{"day_type":"Sunday","hour":11,"trips":348,"wt_miss_per_day":0.14,"share":0.023},{"day_type":"Sunday","hour":12,"trips":348,"wt_miss_per_day":0.09,"share":0.0151},{"day_type":"Sunday","hour":13,"trips":348,"wt_miss_per_day":0.12,"share":0.0194},{"day_type":"Sunday","hour":14,"trips":348,"wt_miss_per_day":0.12,"share":0.0208},{"day_type":"Sunday","hour":15,"trips":348,"wt_miss_per_day":0.13,"share":0.0216},{"day_type":"Sunday","hour":16,"trips":348,"wt_miss_per_day":0.19,"share":0.0323},{"day_type":"Sunday","hour":17,"trips":348,"wt_miss_per_day":0.4,"share":0.0661},{"day_type":"Sunday","hour":18,"trips":232,"wt_miss_per_day":0.29,"share":0.0733},{"day_type":"Sunday","hour":19,"trips":232,"wt_miss_per_day":0.23,"share":0.0582},{"day_type":"Sunday","hour":20,"trips":232,"wt_miss_per_day":0.27,"share":0.0668},{"day_type":"Sunday","hour":21,"trips":232,"wt_miss_per_day":0.27,"share":0.0679},{"day_type":"Sunday","hour":22,"trips":174,"wt_miss_per_day":0.12,"share":0.0417},{"day_type":"Sunday","hour":23,"trips":232,"wt_miss_per_day":0.27,"share":0.0679},{"day_type":"Weekday","hour":0,"trips":756,"wt_miss_per_day":0.14,"share":0.0466},{"day_type":"Weekday","hour":3,"trips":252,"wt_miss_per_day":0.02,"share":0.0238},{"day_type":"Weekday","hour":4,"trips":1008,"wt_miss_per_day":0.12,"share":0.029},{"day_type":"Weekday","hour":5,"trips":1512,"wt_miss_per_day":0.15,"share":0.0245},{"day_type":"Weekday","hour":6,"trips":2520,"wt_miss_per_day":0.38,"share":0.0376},{"day_type":"Weekday","hour":7,"trips":2520,"wt_miss_per_day":0.34,"share":0.0336},{"day_type":"Weekday","hour":8,"trips":2520,"wt_miss_per_day":0.33,"share":0.0328},{"day_type":"Weekday","hour":9,"trips":2520,"wt_miss_per_day":0.36,"share":0.0359},{"day_type":"Weekday","hour":10,"trips":2520,"wt_miss_per_day":0.47,"share":0.0469},{"day_type":"Weekday","hour":11,"trips":2520,"wt_miss_per_day":0.58,"share":0.0579},{"day_type":"Weekday","hour":12,"trips":2520,"wt_miss_per_day":0.35,"share":0.0349},{"day_type":"Weekday","hour":13,"trips":2520,"wt_miss_per_day":0.35,"share":0.0354},{"day_type":"Weekday","hour":14,"trips":2520,"wt_miss_per_day":0.33,"share":0.033},{"day_type":"Weekday","hour":15,"trips":2520,"wt_miss_per_day":0.41,"share":0.041},{"day_type":"Weekday","hour":16,"trips":2520,"wt_miss_per_day":0.39,"share":0.0388},{"day_type":"Weekday","hour":17,"trips":2268,"wt_miss_per_day":0.86,"share":0.0956},{"day_type":"Weekday","hour":18,"trips":2016,"wt_miss_per_day":0.39,"share":0.0491},{"day_type":"Weekday","hour":19,"trips":1512,"wt_miss_per_day":0.14,"share":0.0235},{"day_type":"Weekday","hour":20,"trips":1512,"wt_miss_per_day":0.14,"share":0.0241},{"day_type":"Weekday","hour":21,"trips":1260,"wt_miss_per_day":0.13,"share":0.0262},{"day_type":"Weekday","hour":22,"trips":1512,"wt_miss_per_day":0.18,"share":0.0308},{"day_type":"Weekday","hour":23,"trips":1008,"wt_miss_per_day":0.13,"share":0.0335}],"wms_days_per_type":{"Saturday":52,"Sunday":58,"Weekday":252},"wms_wk17":{"share_of_hour":0.096,"days_losing_full_trip":0.45},"wms_recent_months":["2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07"],"fx_recovery":{"terminals":[{"terminal":"Loughborough Commons","sched_trips":75,"sched_recovery_med":8.0,"sched_recovery_p25":7.0,"under_break_share":0.093,"under_10_share":0.853,"measured_turns":3387,"arriving_late_med":-0.5,"arriving_late_p90":7.9,"recovery_insufficient_share":0.309},{"terminal":"North Broadway Transit Center","sched_trips":73,"sched_recovery_med":25.0,"sched_recovery_p25":24.0,"under_break_share":0.0,"under_10_share":0.0,"measured_turns":3324,"arriving_late_med":1.9,"arriving_late_p90":10.8,"recovery_insufficient_share":0.014}]},"incidents_year":{"total_incidents":10507,"total_delay_min":65781,"months":13,"causes":[{"cause":"Other delays","n":2885,"delay_min":22975},{"cause":"Passenger service","n":1567,"delay_min":18141},{"cause":"Traffic","n":612,"delay_min":8184},{"cause":"Previous trip","n":375,"delay_min":5013},{"cause":"Personal stops","n":1359,"delay_min":4015},{"cause":"Incidents & other","n":2750,"delay_min":2612},{"cause":"Inadequate schedule","n":147,"delay_min":1770},{"cause":"Late relief","n":135,"delay_min":1528},{"cause":"Construction / road closure","n":171,"delay_min":1198},{"cause":"Vehicle / farebox","n":506,"delay_min":345}],"monthly":[{"month":"2025-08","incidents":875,"delay_min":5220},{"month":"2025-09","incidents":864,"delay_min":5412},{"month":"2025-10","incidents":843,"delay_min":5714},{"month":"2025-11","incidents":762,"delay_min":5080},{"month":"2025-12","incidents":784,"delay_min":4042},{"month":"2026-01","incidents":715,"delay_min":3957},{"month":"2026-02","incidents":683,"delay_min":4457},{"month":"2026-03","incidents":696,"delay_min":3745},{"month":"2026-04","incidents":941,"delay_min":7168},{"month":"2026-05","incidents":1038,"delay_min":6907},{"month":"2026-06","incidents":976,"delay_min":6312},{"month":"2026-07","incidents":856,"delay_min":4895},{"month":"2026-08","incidents":474,"delay_min":2872}]},"year":{"totals":{"on_time_departure":35070,"manufactured":11751,"inherited":4858,"pullout_related":2459,"unmeasured":2251,"borderline":1111},"late_composition":{"manufactured":0.582,"inherited":0.241,"pullout_related":0.122,"borderline":0.055},"late_medians":{"dep_lateness":{"borderline":3.28,"inherited":4.67,"manufactured":3.18,"pullout_related":3.38},"slack":{"borderline":6.23,"inherited":-0.78,"manufactured":18.25,"pullout_related":null}},"threshold_sensitivity_year":{">1 min":0.6084,">2 min":0.3652,">5 min":0.0944},"monthly_ledger":[{"month":"2025-08","trips":4477.0,"late_share":0.3551,"manufactured_share":0.2064,"inherited_share":0.0788,"pullout_share":0.0462},{"month":"2025-09","trips":4317.0,"late_share":0.3676,"manufactured_share":0.2087,"inherited_share":0.0931,"pullout_share":0.0438},{"month":"2025-10","trips":4543.0,"late_share":0.3896,"manufactured_share":0.2188,"inherited_share":0.1032,"pullout_share":0.0464},{"month":"2025-11","trips":4210.0,"late_share":0.3969,"manufactured_share":0.2352,"inherited_share":0.0888,"pullout_share":0.0542},{"month":"2025-12","trips":4499.0,"late_share":0.3592,"manufactured_share":0.2203,"inherited_share":0.0733,"pullout_share":0.0458},{"month":"2026-01","trips":4437.0,"late_share":0.3489,"manufactured_share":0.2164,"inherited_share":0.0699,"pullout_share":0.0424},{"month":"2026-02","trips":4045.0,"late_share":0.3528,"manufactured_share":0.2054,"inherited_share":0.0883,"pullout_share":0.041},{"month":"2026-03","trips":4580.0,"late_share":0.3557,"manufactured_share":0.2225,"inherited_share":0.0681,"pullout_share":0.045},{"month":"2026-04","trips":4421.0,"late_share":0.3945,"manufactured_share":0.2149,"inherited_share":0.1151,"pullout_share":0.045},{"month":"2026-05","trips":4334.0,"late_share":0.3994,"manufactured_share":0.2247,"inherited_share":0.1034,"pullout_share":0.0501},{"month":"2026-06","trips":4320.0,"late_share":0.3472,"manufactured_share":0.1884,"inherited_share":0.1012,"pullout_share":0.0391},{"month":"2026-07","trips":4488.0,"late_share":0.3378,"manufactured_share":0.2005,"inherited_share":0.0771,"pullout_share":0.041},{"month":"2026-08","trips":2578.0,"late_share":0.3297,"manufactured_share":0.1951,"inherited_share":0.0818,"pullout_share":0.0345}],"terminal":[{"terminal":"North Broadway Transit Center","n":10366,"manufactured_share":0.786},{"terminal":"Loughborough Commons","n":9813,"manufactured_share":0.368}],"operator":{"n_operators":153,"overall_rate":0.3168,"shrunk_p10":0.0861,"shrunk_p50":0.25,"shrunk_p90":0.608,"shrunk_max":0.8753,"runs_multi_op":163,"same_run_spread_median":0.3417,"same_run_spread_p90":0.7531},"operator_dist":[0.015,0.037,0.04,0.041,0.055,0.056,0.056,0.057,0.058,0.071,0.08,0.081,0.085,0.085,0.086,0.086,0.088,0.099,0.1,0.101,0.102,0.109,0.109,0.112,0.118,0.119,0.124,0.127,0.128,0.134,0.138,0.139,0.14,0.14,0.146,0.146,0.147,0.147,0.153,0.153,0.155,0.155,0.164,0.167,0.168,0.169,0.169,0.169,0.171,0.18,0.18,0.185,0.188,0.192,0.192,0.194,0.195,0.199,0.204,0.205,0.206,0.213,0.222,0.224,0.225,0.228,0.232,0.233,0.236,0.238,0.242,0.243,0.245,0.246,0.247,0.248,0.25,0.254,0.257,0.258,0.262,0.267,0.274,0.276,0.28,0.282,0.284,0.301,0.311,0.315,0.32,0.322,0.325,0.325,0.325,0.329,0.33,0.334,0.34,0.34,0.347,0.349,0.357,0.361,0.369,0.373,0.375,0.378,0.38,0.399,0.401,0.409,0.411,0.437,0.444,0.452,0.454,0.458,0.459,0.461,0.477,0.479,0.485,0.485,0.5,0.5,0.521,0.536,0.538,0.542,0.577,0.58,0.584,0.59,0.595,0.598,0.606,0.608,0.619,0.628,0.658,0.67,0.677,0.688,0.697,0.703,0.728,0.763,0.777,0.778,0.785,0.866,0.875],"operator_tail":[{"op":"A","n":343,"rate":0.924,"shrunk":0.875},{"op":"B","n":928,"rate":0.884,"shrunk":0.866},{"op":"C","n":98,"rate":0.929,"shrunk":0.785},{"op":"D","n":247,"rate":0.834,"shrunk":0.778},{"op":"E","n":62,"rate":1.0,"shrunk":0.777},{"op":"F","n":631,"rate":0.784,"shrunk":0.763},{"op":"G","n":515,"rate":0.751,"shrunk":0.728},{"op":"H","n":187,"rate":0.765,"shrunk":0.703},{"op":"I","n":331,"rate":0.731,"shrunk":0.697},{"op":"J","n":376,"rate":0.718,"shrunk":0.688}]}}</script>
+<script>
+const P = JSON.parse(document.getElementById('payload').textContent);
+const INK='#1a1f2e', GREASE='#c92a1e', GRAPHITE='#5b6472', STOCK='#faf6ec', RULE='#c9c0aa';
+const fmtPct = x => (x*100).toFixed(1)+'%';
+const svgNS='http://www.w3.org/2000/svg';
+function el(parent,tag,attrs={},text){
+  const n=document.createElementNS(svgNS,tag);
+  for(const[k,v]of Object.entries(attrs))n.setAttribute(k,v);
+  if(text!=null)n.textContent=text;
+  parent.appendChild(n);return n;
+}
+
+/* ---------- masthead numbers ---------- */
+document.getElementById('otp-now').textContent=fmtPct(P.headline.otp_trad_july||P.headline.otp_true_july);
+if(P.headline.otp_true_july&&document.getElementById('otp-true-now'))
+  document.getElementById('otp-true-now').textContent=fmtPct(P.headline.otp_true_july);
+if(P.headline.boardings_per_month_recent)
+  document.getElementById('board-recent').textContent=Math.round(P.headline.boardings_per_month_recent/1000)+',000'.replace('','');
+
+/* ---------- trend chart ---------- */
+(function(){
+  const svg=document.getElementById('trend-chart');
+  const W=980,H=340,L=64,R=20,T=26,B=44;
+  const months=P.monthly.map(d=>d.month);
+  // build continuous month axis incl. gaps
+  const first=months[0], last=months[months.length-1];
+  function mIdx(m){const[y,mo]=m.split('-').map(Number);return y*12+mo;}
+  const i0=mIdx(first), i1=mIdx(last), span=i1-i0;
+  const x=m=>L+(mIdx(m)-i0)/(span)*(W-L-R);
+  const yMin=.55,yMax=.90;
+  const y=v=>T+(yMax-v)/(yMax-yMin)*(H-T-B);
+  // gridlines
+  for(let v=.55;v<=.901;v+=.05){
+    el(svg,'line',{x1:L,x2:W-R,y1:y(v),y2:y(v),stroke:RULE,'stroke-width':1});
+    el(svg,'text',{x:L-8,y:y(v)+4,'text-anchor':'end','font-size':12,fill:GRAPHITE},Math.round(v*100)+'%');
+  }
+  // year labels each Jan + first point
+  months.forEach(m=>{
+    if(m.endsWith('-01')||m===first){
+      el(svg,'text',{x:x(m),y:H-16,'text-anchor':'middle','font-size':12,fill:GRAPHITE},
+        m===first?"Jul '23":"Jan '"+m.slice(2,4));
+      el(svg,'line',{x1:x(m),x2:x(m),y1:H-B,y2:H-B+5,stroke:GRAPHITE});
+    }
+  });
+  // target line
+  el(svg,'line',{x1:L,x2:W-R,y1:y(.85),y2:y(.85),stroke:GREASE,'stroke-width':2.5,'stroke-dasharray':'9 6'});
+  el(svg,'text',{x:W-R,y:y(.85)-8,'text-anchor':'end','font-size':13,fill:GREASE,'font-weight':'bold'},'85% TARGET');
+  // two measures: solid = operated service only (traditional); dashed = missed
+  // service counts against the score (true). Both break on month gaps.
+  function drawSeries(key, stroke, width, dash){
+    let seg=[], prev=null;
+    const flush=()=>{ if(seg.length>1){const a={points:seg.map(p=>p.join(',')).join(' '),fill:'none',stroke,'stroke-width':width,'stroke-linejoin':'round'};if(dash)a['stroke-dasharray']=dash;el(svg,'polyline',a);} seg=[]; };
+    P.monthly.forEach(d=>{
+      const v=d[key]; if(v==null)return;
+      if(prev!=null && mIdx(d.month)-mIdx(prev)>1) flush();
+      seg.push([x(d.month).toFixed(1), y(v).toFixed(1)]);
+      prev=d.month;
+    });
+    flush();
+  }
+  const hasTrad=P.monthly.some(d=>d.otp_trad!=null);
+  drawSeries(hasTrad?'otp_trad':'otp_true', INK, 2.5);
+  if(hasTrad) drawSeries('otp_true', GRAPHITE, 1.8, '4 4');
+  // dots on the primary series
+  P.monthly.forEach(d=>{
+    const v=hasTrad?d.otp_trad:d.otp_true;
+    if(v!=null) el(svg,'circle',{cx:x(d.month),cy:y(v),r:3.4,fill:INK});
+  });
+  // legend
+  if(hasTrad){
+    el(svg,'line',{x1:L+8,x2:L+40,y1:T+8,y2:T+8,stroke:INK,'stroke-width':2.5});
+    el(svg,'text',{x:L+46,y:T+12,'font-size':12.5,fill:INK},'service that operated');
+    el(svg,'line',{x1:L+232,x2:L+264,y1:T+8,y2:T+8,stroke:GRAPHITE,'stroke-width':1.8,'stroke-dasharray':'4 4'});
+    el(svg,'text',{x:L+270,y:T+12,'font-size':12.5,fill:INK},'counting missed trips too');
+  }
+  // ransomware-outage gap, Sept–Oct 2023 (months excluded per operator)
+  const gapR=x('2023-08')+10;
+  el(svg,'text',{x:gapR,y:y(.615),'text-anchor':'start','font-size':16,fill:GRAPHITE,'font-family':'Caveat,cursive'},'Sept–Oct ’23: ransomware');
+  el(svg,'text',{x:gapR,y:y(.615)+18,'text-anchor':'start','font-size':16,fill:GRAPHITE,'font-family':'Caveat,cursive'},'outage — excluded');
+  // june dip annotation — pinned low, clear of both lines
+  const j=P.monthly.find(d=>d.month==='2026-06');
+  if(j){
+    const jv=(j.otp_trad!=null?j.otp_trad:j.otp_true);
+    el(svg,'text',{x:x('2026-06')-26,y:y(.578),'text-anchor':'end','font-size':18,fill:GREASE,'font-family':'Caveat,cursive'},'spring 2026 slump began in April; June was systemwide');
+    el(svg,'line',{x1:x('2026-05'),x2:x('2026-05'),y1:y(.585),y2:y(jv)+7,stroke:GREASE,'stroke-width':1.4});
+  }
+})();
+
+/* ---------- ledger bars ---------- */
+(function(){
+  const wrap=document.getElementById('ledger-bars');
+  const rows=[
+    {k:'manufactured', label:'Had the time, left late anyway', sub:'median 15.6 min available', cls:'red'},
+    {k:'inherited',    label:'Never had a chance', sub:'arrived inside the 5-min guaranteed layover', cls:''},
+    {k:'pullout_related', label:'Late out of the garage', sub:'first trip of the vehicle day', cls:'gray'},
+    {k:'borderline',   label:'Borderline', sub:'within 2 min of the break boundary', cls:'gray'},
+  ];
+  const max=Math.max(...rows.map(r=>P.ledger_classes[r.k]||0));
+  rows.forEach(r=>{
+    const n=P.ledger_classes[r.k]||0;
+    const div=document.createElement('div');div.className='ledger-row';
+    const w=Math.max(4, n/max*100);
+    div.innerHTML=`<div class="ledger-label">${r.label}<em>${r.sub}</em></div>
+      <div class="ledger-track"><div class="ledger-fill ${r.cls}" style="width:${w}%"></div>
+      <div class="ledger-n" style="${w>85?`right:12px;color:var(--stock)`:`left:calc(${w}% + 12px)`}">${n}</div></div>`;
+    wrap.appendChild(div);
+  });
+  const cap=document.createElement('p');
+  cap.className='plain';cap.style.marginTop='6px';
+  cap.innerHTML=`<strong>${P.headline.late_departures} of ${P.headline.trips} trips</strong> left their first checkpoint more than two minutes late on July 8. Where they came from:`;
+  wrap.parentNode.insertBefore(cap,wrap);
+})();
+
+/* ---------- slack scatter ---------- */
+(function(){
+  const svg=document.getElementById('slack-chart');
+  const W=980,H=430,L=64,R=24,T=24,B=52;
+  const xMax=42,yMinV=-2,yMaxV=13;
+  const x=v=>L+Math.min(v,xMax)/xMax*(W-L-R);
+  const y=v=>T+(yMaxV-Math.max(Math.min(v,yMaxV),yMinV))/(yMaxV-yMinV)*(H-T-B);
+  // shaded "had time, late anyway" region: slack>=7, late>1
+  el(svg,'rect',{x:x(7),y:y(yMaxV),width:x(xMax)-x(7),height:y(1)-y(yMaxV),fill:GREASE,opacity:.07});
+  el(svg,'text',{x:x(7)+14,y:y(yMaxV)+52,'font-size':19,fill:GREASE,'font-family':'Caveat,cursive'},'had time, left late anyway');
+  // axes + grid
+  for(let v=0;v<=xMax;v+=10){
+    el(svg,'line',{x1:x(v),x2:x(v),y1:T,y2:H-B,stroke:RULE});
+    el(svg,'text',{x:x(v),y:H-B+20,'text-anchor':'middle','font-size':12,fill:GRAPHITE},v+(v===40?'+':''));
+  }
+  for(let v=0;v<=12;v+=4){
+    el(svg,'line',{x1:L,x2:W-R,y1:y(v),y2:y(v),stroke:RULE});
+    el(svg,'text',{x:L-8,y:y(v)+4,'text-anchor':'end','font-size':12,fill:GRAPHITE},v);
+  }
+  el(svg,'text',{x:(L+W-R)/2,y:H-8,'text-anchor':'middle','font-size':13,fill:INK},'minutes of slack at the terminal (arrival → next scheduled departure)');
+  el(svg,'text',{x:16,y:T-6,'font-size':13,fill:INK},'left how late (min)');
+  // 5-min break rule
+  el(svg,'line',{x1:x(5),x2:x(5),y1:T,y2:H-B,stroke:INK,'stroke-width':1.6,'stroke-dasharray':'5 4'});
+  el(svg,'text',{x:x(5)+6,y:H-B-10,'font-size':16,fill:INK,'font-family':'Caveat,cursive'},'5-min guaranteed layover');
+  // adopted 2-minute departure-rule line
+  el(svg,'line',{x1:L,x2:W-R,y1:y(2),y2:y(2),stroke:INK,'stroke-width':1.2});
+  el(svg,'text',{x:W-R-4,y:y(2)-6,'text-anchor':'end','font-size':11.5,fill:GRAPHITE},'2 min late (departure rule)');
+  const colors={manufactured:GREASE,inherited:INK,borderline:GRAPHITE,on_time_departure:'#a89e83'};
+  P.slack_vs_lateness.forEach(d=>{
+    el(svg,'circle',{cx:x(d.slack),cy:y(d.late),r:4.2,fill:colors[d.cls]||GRAPHITE,opacity:d.cls==='on_time_departure'?.55:.85});
+  });
+  // legend
+  const leg=[['manufactured','left late with slack'],['inherited','arrived too late'],['on_time_departure','left on time']];
+  let lx=L+8;
+  leg.forEach(([k,t])=>{
+    el(svg,'circle',{cx:lx,cy:T+10,r:5,fill:colors[k]});
+    const txt=el(svg,'text',{x:lx+10,y:T+14,'font-size':12.5,fill:INK},t);
+    lx+=10+t.length*7.4+26;
+  });
+})();
+
+/* ---------- year-scale sections ---------- */
+(function(){
+  const Y=P.year; if(!Y)return;
+  const meas=Object.entries(Y.totals).filter(([k])=>k!=='unmeasured').reduce((s,[,v])=>s+v,0);
+  const lateN=meas-Y.totals.on_time_departure;
+  document.getElementById('yr-late').textContent=Math.round(lateN/meas*100)+'%';
+  document.getElementById('yr-manu').textContent=Math.round(Y.late_composition.manufactured*100)+'%';
+  document.getElementById('yr-slack').textContent=Y.late_medians.slack.manufactured.toFixed(0);
+  // composition bars (year)
+  const wrap=document.getElementById('year-comp');
+  const rows=[
+    {k:'manufactured',label:'Had the time, left late anyway',cls:'red'},
+    {k:'inherited',label:'Never had a chance',cls:''},
+    {k:'pullout_related',label:'Late out of the garage',cls:'gray'},
+    {k:'borderline',label:'Borderline',cls:'gray'}];
+  const max=Math.max(...rows.map(r=>Y.totals[r.k]||0));
+  rows.forEach(r=>{
+    const n=Y.totals[r.k]||0, w=Math.max(4,n/max*100);
+    const div=document.createElement('div');div.className='ledger-row';
+    div.innerHTML=`<div class="ledger-label">${r.label}<em>${(n/lateN*100).toFixed(0)}% of the year's late departures</em></div>
+      <div class="ledger-track"><div class="ledger-fill ${r.cls}" style="width:${w}%"></div>
+      <div class="ledger-n" style="${w>85?`right:12px;color:var(--stock)`:`left:calc(${w}% + 12px)`}">${n.toLocaleString()}</div></div>`;
+    wrap.appendChild(div);
+  });
+  // terminal bars
+  const tn=document.getElementById('term-north'), ts=document.getElementById('term-south');
+  const tb=document.getElementById('terminal-bars');
+  (Y.terminal||[]).forEach(t=>{
+    const pct=Math.round(t.manufactured_share*100);
+    if(/broadway/i.test(t.terminal)&&tn)tn.textContent=pct+'%';
+    if(/loughborough/i.test(t.terminal)&&ts)ts.textContent=pct+'%';
+    const div=document.createElement('div');div.className='ledger-row';
+    div.innerHTML=`<div class="ledger-label">${t.terminal}<em>${t.n.toLocaleString()} late departures</em></div>
+      <div class="ledger-track"><div class="ledger-fill red" style="width:${t.manufactured_share*100}%"></div>
+      <div class="ledger-n" style="${t.manufactured_share>0.85?`right:12px;color:var(--stock)`:`left:calc(${t.manufactured_share*100}% + 12px)`}">${pct}% had slack</div></div>`;
+    tb.appendChild(div);
+  });
+  document.querySelectorAll('#terminal-bars .ledger-n').forEach(n=>{n.style.fontSize='1.05rem';});
+  // operator dot strip
+  const svg=document.getElementById('operator-strip'); if(!svg)return;
+  const O=Y.operator;
+  const W=980,H=240,L=60,R=30,T=44,B=56;
+  const x=v=>L+v*(W-L-R);
+  for(let v=0;v<=1.001;v+=.25){
+    el(svg,'line',{x1:x(v),x2:x(v),y1:T-6,y2:H-B,stroke:RULE});
+    el(svg,'text',{x:x(v),y:H-B+20,'text-anchor':'middle','font-size':12,fill:GRAPHITE},Math.round(v*100)+'%');
+  }
+  el(svg,'text',{x:(L+W-R)/2,y:H-8,'text-anchor':'middle','font-size':13,fill:INK},'share of slack-available departures the operator left >2 min late');
+  // simulate the dot positions from the summary quantiles is dishonest; use the anonymized tail + quantile markers only if full dist absent
+  const dist=Y.operator_dist;
+  if(dist){
+    // jittered strip
+    dist.forEach((v,i)=>{
+      el(svg,'circle',{cx:x(v),cy:T+30+((i*37)%3)*26+((i*17)%13),r:4.5,fill:INK,opacity:.55});
+    });
+  }
+  [[O.shrunk_p10,'p10'],[O.shrunk_p50,'median'],[O.shrunk_p90,'p90']].forEach(([v,lab])=>{
+    el(svg,'line',{x1:x(v),x2:x(v),y1:T-2,y2:H-B,stroke:GREASE,'stroke-width':2,'stroke-dasharray':'6 4'});
+    el(svg,'text',{x:x(v),y:T-12,'text-anchor':'middle','font-size':14,fill:GREASE,'font-family':'Caveat,cursive'},lab+' '+Math.round(v*100)+'%');
+  });
+})();
+
+/* ---------- weighted missed service ---------- */
+(function(){
+  const M=P.wms_monthly; if(!M)return;
+  // monthly bars
+  (function(){
+    const svg=document.getElementById('wms-month-chart'); if(!svg)return;
+    const W=980,H=300,L=64,R=20,T=26,B=44;
+    const mIdx=m=>{const[y,mo]=m.split('-').map(Number);return y*12+mo;};
+    const i0=mIdx(M[0].month), i1=mIdx(M[M.length-1].month);
+    const bw=(W-L-R)/(i1-i0+1);
+    const x=m=>L+(mIdx(m)-i0)*bw;
+    const maxv=Math.max(...M.map(d=>d.wt_miss));
+    const y=v=>T+(maxv-v)/maxv*(H-T-B);
+    for(let v=0;v<=maxv;v+=100){
+      el(svg,'line',{x1:L,x2:W-R,y1:y(v),y2:y(v),stroke:RULE});
+      el(svg,'text',{x:L-8,y:y(v)+4,'text-anchor':'end','font-size':12,fill:GRAPHITE},v);
+    }
+    M.forEach(d=>{
+      el(svg,'rect',{x:x(d.month)+1,y:y(d.wt_miss),width:Math.max(bw-2,3),height:y(0)-y(d.wt_miss),fill:GREASE,opacity:.85});
+      if(d.month.endsWith('-01')||d.month===M[0].month)
+        el(svg,'text',{x:x(d.month)+bw/2,y:H-16,'text-anchor':'middle','font-size':12,fill:GRAPHITE},
+          d.month===M[0].month?"Jul '23":"Jan '"+d.month.slice(2,4));
+    });
+    el(svg,'text',{x:16,y:T-8,'font-size':13,fill:INK},'weighted missed trips per month');
+    const jn=M.find(d=>d.month==='2026-06');
+    if(jn) el(svg,'text',{x:x('2026-06')-8,y:y(jn.wt_miss)-10,'text-anchor':'end','font-size':17,fill:GREASE,'font-family':'Caveat,cursive'},'June 2026 surge');
+  })();
+  // hourly bars, per service day, split by schedule day type
+  (function(){
+    const Hh=P.wms_by_hour_daytype; if(!Hh)return;
+    const svg=document.getElementById('wms-hour-chart'); if(!svg)return;
+    const W=980,H=300,L=64,R=20,T=44,B=46;
+    const hours=[...new Set(Hh.filter(d=>d.hour>=4).map(d=>d.hour))].sort((a,b)=>a-b);
+    const types=['Weekday','Saturday','Sunday'];
+    const color={Weekday:INK, Saturday:GRAPHITE, Sunday:'#a89e83'};
+    const lut={};
+    Hh.forEach(d=>{lut[d.day_type+'|'+d.hour]=d;});
+    const gw=(W-L-R)/hours.length;             // one group per hour
+    const bwv=gw*0.26;                          // three bars per group
+    const maxv=Math.max(...Hh.filter(d=>d.hour>=4).map(d=>d.share));
+    const y=v=>T+(maxv-v)/maxv*(H-T-B);
+    const step=maxv>0.08?0.02:0.01;
+    for(let v=0;v<=maxv+1e-9;v+=step){
+      el(svg,'line',{x1:L,x2:W-R,y1:y(v),y2:y(v),stroke:RULE});
+      el(svg,'text',{x:L-8,y:y(v)+4,'text-anchor':'end','font-size':12,fill:GRAPHITE},Math.round(v*100)+'%');
+    }
+    hours.forEach((h,i)=>{
+      types.forEach((dt,j)=>{
+        const v=(lut[dt+'|'+h]||{}).share;
+        if(v==null)return;
+        el(svg,'rect',{x:L+i*gw+gw*0.10+j*bwv,y:y(v),width:bwv-1.5,height:y(0)-y(v),
+                       fill:color[dt],stroke:dt==='Sunday'?INK:'none','stroke-width':dt==='Sunday'?0.6:0});
+      });
+      el(svg,'text',{x:L+i*gw+gw/2,y:H-B+18,'text-anchor':'middle','font-size':12,fill:GRAPHITE},h);
+    });
+    el(svg,'text',{x:(L+W-R)/2,y:H-8,'text-anchor':'middle','font-size':13,fill:INK},'hour of day (service day)');
+    el(svg,'text',{x:16,y:T-26,'font-size':13,fill:INK},"share of the hour's scheduled service missed (weighted)");
+    // concentration scrawl at the weekday 5 p.m. peak
+    if(P.wms_wk17){
+      const i17=hours.indexOf(17);
+      if(i17>=0){
+        const v17=(lut['Weekday|17']||{}).share||maxv;
+        el(svg,'text',{x:L+i17*gw-8,y:y(v17)+40,'text-anchor':'end','font-size':17,fill:GREASE,'font-family':'Caveat,cursive'},
+          Math.round(P.wms_wk17.days_losing_full_trip*100)+'% of weekdays lose a full trip here →');
+      }
+    }
+    // legend
+    let lx=L+6;
+    types.forEach(dt=>{
+      el(svg,'rect',{x:lx,y:T-14,width:12,height:12,fill:color[dt],stroke:dt==='Sunday'?INK:'none','stroke-width':dt==='Sunday'?0.6:0});
+      el(svg,'text',{x:lx+18,y:T-4,'font-size':12.5,fill:INK},dt);
+      lx+=18+dt.length*7.6+26;
+    });
+  })();
+  const cap=document.getElementById('wms-hour-cap');
+  if(cap&&P.wms_recent_months)
+    cap.textContent='Each bar: the weighted missed trips in that hour as a share of the trips scheduled in it, by schedule day type (a holiday counts as the schedule it ran), '+
+      P.wms_recent_months[0]+' through '+P.wms_recent_months[P.wms_recent_months.length-1]+
+      ' (months with extracts; '+(P.wms_days_per_type?Object.entries(P.wms_days_per_type).map(e=>e[1]+' '+e[0]+' days').join(', '):'')+'). A share reads the same for a 9-trip peak hour and a 4-trip evening hour, so the three day types and all hours compare on one scale. The absolute mass is the monthly chart above. The tallest bar is where riders lose the most service — not necessarily the hour with the worst on-time performance.';
+})();
+
+/* ---------- rule picker ---------- */
+(function(){
+  const share=document.getElementById('rule-share');
+  const label=document.getElementById('rule-label');
+  const stamp=document.getElementById('rule-stamp');
+  const S=P.threshold_sensitivity;
+  const words={1:'>1 min',2:'>2 min',5:'>5 min'};
+  function setRule(r){
+    const v=S['>'+r+' min'];
+    share.textContent=Math.round(v*100)+'%';
+    label.textContent='of trips left the first checkpoint '+words[r]+' late';
+    stamp.textContent = v>0.4?'late day':(v>0.15?'rough day':'normal day');
+    stamp.classList.toggle('ok', v<=0.15);
+    document.querySelectorAll('.rulebox button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.rule===String(r))));
+  }
+  document.querySelectorAll('.rulebox button').forEach(b=>b.addEventListener('click',()=>setRule(b.dataset.rule)));
+  setRule(2);
+})();
+
+/* ---------- congestion heat strip ---------- */
+(function(){
+  const svg=document.getElementById('congestion-chart');
+  const W=980,H=260,L=110,R=20,T=34,B=44;
+  const hours=[...new Set(P.congestion_by_hour.map(d=>d.hour))].sort((a,b)=>a-b);
+  const dirs=['0N','0S'];
+  const dirName={'0N':'Northbound','0S':'Southbound'};
+  const cw=(W-L-R)/hours.length, ch=(H-T-B)/dirs.length;
+  const maxv=Math.max(...P.congestion_by_hour.map(d=>d.p90_excess),1);
+  P.congestion_by_hour.forEach(d=>{
+    const xi=hours.indexOf(d.hour), yi=dirs.indexOf(d.direction);
+    if(xi<0||yi<0)return;
+    const t=Math.max(0,d.p90_excess)/maxv;
+    const a=t===0?0:(.12+t*.78);
+    const fill = t===0?'#eee8d8':`rgba(201,42,30,${a.toFixed(2)})`;
+    el(svg,'rect',{x:L+xi*cw+1,y:T+yi*ch+1,width:cw-2,height:ch-2,fill});
+    if(d.p90_excess>=1){
+      const bg=[250,246,236], fg=[201,42,30];
+      const cell=bg.map((c,i)=>c*(1-a)+fg[i]*a);
+      const lum=rgb=>{const s=rgb.map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4);});return .2126*s[0]+.7152*s[1]+.0722*s[2];};
+      const Lc=lum(cell), Li=lum([26,31,46]), Ls=lum([250,246,236]);
+      const cInk=(Math.max(Lc,Li)+.05)/(Math.min(Lc,Li)+.05);
+      const cStock=(Math.max(Lc,Ls)+.05)/(Math.min(Lc,Ls)+.05);
+      el(svg,'text',{x:L+xi*cw+cw/2,y:T+yi*ch+ch/2+5,'text-anchor':'middle','font-size':12.5,
+        fill:cInk>=cStock?INK:STOCK,'font-weight':'bold'},'+'+d.p90_excess.toFixed(1));
+    }
+  });
+  dirs.forEach((d,i)=>el(svg,'text',{x:L-10,y:T+i*ch+ch/2+5,'text-anchor':'end','font-size':13,fill:INK},dirName[d]));
+  hours.forEach((h,i)=>{ if(h%2===0) el(svg,'text',{x:L+i*cw+cw/2,y:H-B+20,'text-anchor':'middle','font-size':12,fill:GRAPHITE},(h%24)+''); });
+  el(svg,'text',{x:(L+W-R)/2,y:H-6,'text-anchor':'middle','font-size':13,fill:INK},'hour of day (service day)');
+  el(svg,'text',{x:L,y:T-14,'font-size':13,fill:GRAPHITE},'minutes lost vs schedule by the slowest 10% of segment runs — deeper red = more lost');
+})();
+
+/* ---------- headway chart ---------- */
+(function(){
+  const svg=document.getElementById('headway-chart');
+  const W=980,H=260,L=64,R=20,T=30,B=46;
+  const rows=P.headway_by_hour.filter(d=>d.hour>=5&&d.hour<=23);
+  const hours=rows.map(d=>d.hour);
+  const bw=(W-L-R)/rows.length;
+  const maxv=Math.max(...rows.map(d=>Math.max(d.bunched,d.gapped)),.3);
+  const y=v=>T+(maxv-v)/maxv*(H-T-B);
+  for(let v=0;v<=maxv+.001;v+=.1){
+    el(svg,'line',{x1:L,x2:W-R,y1:y(v),y2:y(v),stroke:RULE});
+    el(svg,'text',{x:L-8,y:y(v)+4,'text-anchor':'end','font-size':12,fill:GRAPHITE},Math.round(v*100)+'%');
+  }
+  rows.forEach((d,i)=>{
+    const x0=L+i*bw;
+    el(svg,'rect',{x:x0+bw*.16,y:y(d.bunched),width:bw*.3,height:y(0)-y(d.bunched),fill:INK});
+    el(svg,'rect',{x:x0+bw*.54,y:y(d.gapped),width:bw*.3,height:y(0)-y(d.gapped),fill:GREASE});
+    el(svg,'text',{x:x0+bw/2,y:H-B+18,'text-anchor':'middle','font-size':12,fill:GRAPHITE},d.hour);
+  });
+  el(svg,'text',{x:(L+W-R)/2,y:H-8,'text-anchor':'middle','font-size':13,fill:INK},'hour of day — July 8');
+  // legend
+  el(svg,'rect',{x:L+6,y:T-20,width:12,height:12,fill:INK});
+  el(svg,'text',{x:L+24,y:T-10,'font-size':12.5,fill:INK},'bunched (< half the scheduled interval)');
+  el(svg,'rect',{x:L+320,y:T-20,width:12,height:12,fill:GREASE});
+  el(svg,'text',{x:L+338,y:T-10,'font-size':12.5,fill:INK},'gap (> 1.5× the scheduled interval)');
+})();
+
+/* ---------- scheduled recovery vs arriving lateness ---------- */
+(function(){
+  const F=P.fx_recovery; if(!F)return;
+  const wrap=document.getElementById('fx-bars'); if(!wrap)return;
+  const max=Math.max(...F.terminals.map(x=>x.sched_recovery_med));
+  F.terminals.slice().sort((a,b)=>b.sched_recovery_med-a.sched_recovery_med).forEach(x=>{
+    const w=Math.max(4, x.sched_recovery_med/max*100);
+    const insuf=Math.round(x.recovery_insufficient_share*1000)/10;
+    const cls=x.recovery_insufficient_share>0.15?'red':'';
+    const div=document.createElement('div');div.className='ledger-row';
+    const nPos = w>85 ? `right:12px;color:var(--stock)` : `left:calc(${w}% + 12px)`;
+    div.innerHTML=`<div class="ledger-label" style="font-size:.95rem">${x.terminal}<em>arrivals outrun the recovery on ${insuf}% of turns</em></div>
+      <div class="ledger-track" style="height:34px"><div class="ledger-fill ${cls}" style="width:${w}%"></div>
+      <div class="ledger-n" style="${nPos};font-size:1.05rem">${x.sched_recovery_med} min scheduled</div></div>`;
+    wrap.appendChild(div);
+  });
+  const n=F.terminals.find(x=>/broadway/i.test(x.terminal)), s=F.terminals.find(x=>/loughborough/i.test(x.terminal));
+  if(n){document.getElementById('fx-n-med').textContent=n.sched_recovery_med;
+       document.getElementById('fx-n-insuf').textContent=(n.recovery_insufficient_share*100).toFixed(1)+'%';}
+  if(s){document.getElementById('fx-s-med').textContent=s.sched_recovery_med;
+       document.getElementById('fx-s-insuf').textContent=Math.round(s.recovery_insufficient_share*100)+'%';}
+})();
+
+/* ---------- year of incidents ---------- */
+(function(){
+  const I=P.incidents_year; if(!I)return;
+  document.getElementById('inc-n').textContent=I.total_incidents.toLocaleString();
+  document.getElementById('inc-delay').textContent=I.total_delay_min.toLocaleString();
+  const wrap=document.getElementById('incident-bars'); if(!wrap)return;
+  const rows=I.causes.filter(c=>c.delay_min>0).slice(0,8);
+  const max=Math.max(...rows.map(c=>c.delay_min));
+  // in-world coloring: red only where the cause is operator/dispatch behavior
+  const red=new Set(['Personal stops','Late relief']);
+  rows.forEach(c=>{
+    const w=Math.max(3,c.delay_min/max*100);
+    const cls=red.has(c.cause)?'red':(c.cause==='Inadequate schedule'?'gray':'');
+    const div=document.createElement('div');div.className='ledger-row';
+    const nPos = w>85 ? `right:12px;color:var(--stock)` : `left:calc(${w}% + 12px)`;
+    div.innerHTML=`<div class="ledger-label" style="font-size:.95rem">${c.cause}<em>${c.n.toLocaleString()} incidents</em></div>
+      <div class="ledger-track" style="height:34px"><div class="ledger-fill ${cls}" style="width:${w}%"></div>
+      <div class="ledger-n" style="${nPos};font-size:1.05rem">${c.delay_min.toLocaleString()} min</div></div>`;
+    wrap.appendChild(div);
+  });
+})();
+
+/* ---------- trouble log ---------- */
+(function(){
+  const host=document.getElementById('trouble-table');
+  const tbl=document.createElement('table');tbl.className='log';
+  tbl.innerHTML='<thead><tr><th>Time</th><th>Run</th><th>Problem</th><th>Where</th><th>Delay</th></tr></thead>';
+  const tb=document.createElement('tbody');
+  P.trouble_log.forEach(d=>{
+    const tr=document.createElement('tr');
+    const isOut=/out late/i.test(d.problem);
+    if(isOut)tr.className='outlate';
+    const loc=(d.location||'').replace(/\[on\]/g,'').replace(/BW Fa[cv]/i,'Brentwood garage');
+    tr.innerHTML=`<td>${d.time}</td><td>${d.run??''}</td>
+      <td class="prob">${d.problem}</td><td>${loc}</td>
+      <td class="delay ${d.delay_min>=15?'red':''}">${d.delay_min?d.delay_min+' min':'—'}</td>`;
+    tb.appendChild(tr);
+  });
+  tbl.appendChild(tb);host.appendChild(tbl);
+})();
+
+/* ---------- stamp entrance (one authored moment) ---------- */
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target);}
+  }),{threshold:.25});
+  document.querySelectorAll('[data-stamp]').forEach(s=>{s.classList.add('pre');io.observe(s);});
+  // fallback: never leave a stamp invisible (print, full-page capture, odd viewports)
+  setTimeout(()=>document.querySelectorAll('.stamp.pre').forEach(s=>s.classList.remove('pre')),1400);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.querySelectorAll('[data-stamp]').forEach(s=>{
+      const r=s.getBoundingClientRect();
+      if(r.top<innerHeight&&r.bottom>0){s.classList.remove('pre');io.unobserve(s);}
+    });
+  }));
+})();
+</script>
+</body>
+</html>
